@@ -8,13 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		106124E22027BAD200F10338 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106124E12027BAD200F10338 /* AppDelegate.swift */; };
-		106124E42027BAD200F10338 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106124E32027BAD200F10338 /* ViewController.swift */; };
+		106124E42027BAD200F10338 /* DocumentList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106124E32027BAD200F10338 /* DocumentList.swift */; };
 		106124E72027BAD200F10338 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 106124E52027BAD200F10338 /* Main.storyboard */; };
 		106124EA2027BAD200F10338 /* Breezy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 106124E82027BAD200F10338 /* Breezy.xcdatamodeld */; };
 		106124EC2027BAD200F10338 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 106124EB2027BAD200F10338 /* Assets.xcassets */; };
 		106124EF2027BAD200F10338 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 106124ED2027BAD200F10338 /* LaunchScreen.storyboard */; };
 		106124FA2027BAD200F10338 /* BreezyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106124F92027BAD200F10338 /* BreezyTests.swift */; };
 		106125052027BAD200F10338 /* BreezyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106125042027BAD200F10338 /* BreezyUITests.swift */; };
+		106125212027BCD100F10338 /* Document+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1061251D2027BCD100F10338 /* Document+CoreDataClass.swift */; };
+		106125222027BCD100F10338 /* Document+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1061251E2027BCD100F10338 /* Document+CoreDataProperties.swift */; };
+		106125232027BCD100F10338 /* Tag+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1061251F2027BCD100F10338 /* Tag+CoreDataClass.swift */; };
+		106125242027BCD100F10338 /* Tag+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106125202027BCD100F10338 /* Tag+CoreDataProperties.swift */; };
+		106125262027BE6300F10338 /* DocumentListTV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106125252027BE6300F10338 /* DocumentListTV.swift */; };
+		106125282027BE7300F10338 /* DocumentListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106125272027BE7300F10338 /* DocumentListCell.swift */; };
+		1061252A2027BF9600F10338 /* DocumentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106125292027BF9600F10338 /* DocumentVC.swift */; };
+		1061252C2027BFA600F10338 /* DocumentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1061252B2027BFA600F10338 /* DocumentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +45,7 @@
 /* Begin PBXFileReference section */
 		106124DE2027BAD200F10338 /* Breezy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Breezy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		106124E12027BAD200F10338 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		106124E32027BAD200F10338 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		106124E32027BAD200F10338 /* DocumentList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentList.swift; sourceTree = "<group>"; };
 		106124E62027BAD200F10338 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		106124E92027BAD200F10338 /* Breezy.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Breezy.xcdatamodel; sourceTree = "<group>"; };
 		106124EB2027BAD200F10338 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,6 +57,14 @@
 		106125002027BAD200F10338 /* BreezyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BreezyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		106125042027BAD200F10338 /* BreezyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreezyUITests.swift; sourceTree = "<group>"; };
 		106125062027BAD200F10338 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1061251D2027BCD100F10338 /* Document+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Document+CoreDataClass.swift"; sourceTree = "<group>"; };
+		1061251E2027BCD100F10338 /* Document+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Document+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		1061251F2027BCD100F10338 /* Tag+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tag+CoreDataClass.swift"; sourceTree = "<group>"; };
+		106125202027BCD100F10338 /* Tag+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tag+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		106125252027BE6300F10338 /* DocumentListTV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentListTV.swift; sourceTree = "<group>"; };
+		106125272027BE7300F10338 /* DocumentListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentListCell.swift; sourceTree = "<group>"; };
+		106125292027BF9600F10338 /* DocumentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentVC.swift; sourceTree = "<group>"; };
+		1061252B2027BFA600F10338 /* DocumentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,7 +116,9 @@
 			isa = PBXGroup;
 			children = (
 				106124E12027BAD200F10338 /* AppDelegate.swift */,
-				106124E32027BAD200F10338 /* ViewController.swift */,
+				106125122027BB4900F10338 /* Model */,
+				106125132027BB5300F10338 /* View */,
+				106125142027BB5800F10338 /* Controller */,
 				106124E52027BAD200F10338 /* Main.storyboard */,
 				106124EB2027BAD200F10338 /* Assets.xcassets */,
 				106124ED2027BAD200F10338 /* LaunchScreen.storyboard */,
@@ -126,6 +144,36 @@
 				106125062027BAD200F10338 /* Info.plist */,
 			);
 			path = BreezyUITests;
+			sourceTree = "<group>";
+		};
+		106125122027BB4900F10338 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1061251D2027BCD100F10338 /* Document+CoreDataClass.swift */,
+				1061251E2027BCD100F10338 /* Document+CoreDataProperties.swift */,
+				1061251F2027BCD100F10338 /* Tag+CoreDataClass.swift */,
+				106125202027BCD100F10338 /* Tag+CoreDataProperties.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		106125132027BB5300F10338 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				106125252027BE6300F10338 /* DocumentListTV.swift */,
+				106125272027BE7300F10338 /* DocumentListCell.swift */,
+				1061252B2027BFA600F10338 /* DocumentView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		106125142027BB5800F10338 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				106124E32027BAD200F10338 /* DocumentList.swift */,
+				106125292027BF9600F10338 /* DocumentVC.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,8 +310,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				106125282027BE7300F10338 /* DocumentListCell.swift in Sources */,
+				1061252A2027BF9600F10338 /* DocumentVC.swift in Sources */,
 				106124EA2027BAD200F10338 /* Breezy.xcdatamodeld in Sources */,
-				106124E42027BAD200F10338 /* ViewController.swift in Sources */,
+				106125222027BCD100F10338 /* Document+CoreDataProperties.swift in Sources */,
+				106124E42027BAD200F10338 /* DocumentList.swift in Sources */,
+				106125212027BCD100F10338 /* Document+CoreDataClass.swift in Sources */,
+				106125262027BE6300F10338 /* DocumentListTV.swift in Sources */,
+				1061252C2027BFA600F10338 /* DocumentView.swift in Sources */,
+				106125242027BCD100F10338 /* Tag+CoreDataProperties.swift in Sources */,
+				106125232027BCD100F10338 /* Tag+CoreDataClass.swift in Sources */,
 				106124E22027BAD200F10338 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
