@@ -11,6 +11,13 @@ import CoreData
 
 class DocumentList: UIViewController, NSFetchedResultsControllerDelegate, UITableViewDataSource {
   
+  lazy var frc: NSFetchedResultsController<Document> {
+    
+    let context = 
+
+    var fetchedResultsController = NSFetchedResultsController<Document>(fetchRequest: Document.fetchRequest(), managedObjectContext: <#T##NSManagedObjectContext#>, sectionNameKeyPath: nil, cacheName: nil)
+  }
+  
   override func viewDidLoad() {
     super.viewDidLoad()
   }

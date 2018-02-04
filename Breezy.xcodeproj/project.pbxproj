@@ -19,10 +19,10 @@
 		106125222027BCD100F10338 /* Document+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1061251E2027BCD100F10338 /* Document+CoreDataProperties.swift */; };
 		106125232027BCD100F10338 /* Tag+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1061251F2027BCD100F10338 /* Tag+CoreDataClass.swift */; };
 		106125242027BCD100F10338 /* Tag+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106125202027BCD100F10338 /* Tag+CoreDataProperties.swift */; };
-		106125262027BE6300F10338 /* DocumentListTV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106125252027BE6300F10338 /* DocumentListTV.swift */; };
 		106125282027BE7300F10338 /* DocumentListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106125272027BE7300F10338 /* DocumentListCell.swift */; };
 		1061252A2027BF9600F10338 /* DocumentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106125292027BF9600F10338 /* DocumentVC.swift */; };
 		1061252C2027BFA600F10338 /* DocumentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1061252B2027BFA600F10338 /* DocumentView.swift */; };
+		1061252E2027C0DD00F10338 /* DocumentListTV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1061252D2027C0DD00F10338 /* DocumentListTV.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,10 +61,10 @@
 		1061251E2027BCD100F10338 /* Document+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Document+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		1061251F2027BCD100F10338 /* Tag+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tag+CoreDataClass.swift"; sourceTree = "<group>"; };
 		106125202027BCD100F10338 /* Tag+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tag+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		106125252027BE6300F10338 /* DocumentListTV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentListTV.swift; sourceTree = "<group>"; };
 		106125272027BE7300F10338 /* DocumentListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentListCell.swift; sourceTree = "<group>"; };
 		106125292027BF9600F10338 /* DocumentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentVC.swift; sourceTree = "<group>"; };
 		1061252B2027BFA600F10338 /* DocumentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentView.swift; sourceTree = "<group>"; };
+		1061252D2027C0DD00F10338 /* DocumentListTV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentListTV.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,9 +160,9 @@
 		106125132027BB5300F10338 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				106125252027BE6300F10338 /* DocumentListTV.swift */,
 				106125272027BE7300F10338 /* DocumentListCell.swift */,
 				1061252B2027BFA600F10338 /* DocumentView.swift */,
+				1061252D2027C0DD00F10338 /* DocumentListTV.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -315,8 +315,8 @@
 				106124EA2027BAD200F10338 /* Breezy.xcdatamodeld in Sources */,
 				106125222027BCD100F10338 /* Document+CoreDataProperties.swift in Sources */,
 				106124E42027BAD200F10338 /* DocumentList.swift in Sources */,
+				1061252E2027C0DD00F10338 /* DocumentListTV.swift in Sources */,
 				106125212027BCD100F10338 /* Document+CoreDataClass.swift in Sources */,
-				106125262027BE6300F10338 /* DocumentListTV.swift in Sources */,
 				1061252C2027BFA600F10338 /* DocumentView.swift in Sources */,
 				106125242027BCD100F10338 /* Tag+CoreDataProperties.swift in Sources */,
 				106125232027BCD100F10338 /* Tag+CoreDataClass.swift in Sources */,
