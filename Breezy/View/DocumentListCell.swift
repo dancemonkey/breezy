@@ -9,16 +9,22 @@
 import UIKit
 
 class DocumentListCell: UITableViewCell {
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
+  
+  var titleLbl: UILabel!
+  var previewLbl: UILabel!
+  var creationLbl: UILabel!
+  var tagView: UIView!
+  
+  override func awakeFromNib() {
+    super.awakeFromNib()
+    
+  }
+  
+  func configure(with document: Document) {
+    titleLbl.text = document.title
+    previewLbl.text = document.text
+    creationLbl.text = String(describing: document.creation)
+    // TODO: tagView to show all tags this doc is... tagged with
+  }
+  
 }

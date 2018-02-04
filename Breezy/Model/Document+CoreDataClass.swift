@@ -24,4 +24,7 @@ public class Document: NSManagedObject {
     tag.addToDocuments(self)
   }
   
+  // TODO: function to return truncated preview of text
+  // TODO: func to return friendly date string for tableCells
+  
 }

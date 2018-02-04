@@ -11,27 +11,41 @@ import CoreData
 
 class DocumentList: UIViewController, NSFetchedResultsControllerDelegate, UITableViewDataSource {
   
-  lazy var frc: NSFetchedResultsController<Document> {
+  var frc: NSFetchedResultsController<Document> {
     
-    let context = 
-
-    var fetchedResultsController = NSFetchedResultsController<Document>(fetchRequest: Document.fetchRequest(), managedObjectContext: <#T##NSManagedObjectContext#>, sectionNameKeyPath: nil, cacheName: nil)
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    let fetchRequest: NSFetchRequest<Document> = Document.fetchRequest()
+    fetchRequest.sortDescriptors = [NSSortDescriptor(key: "creation", ascending: true)]
+    
+    let fetchedResultsController = NSFetchedResultsController<Document>(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+    
+    return fetchedResultsController
   }
   
   override func viewDidLoad() {
     super.viewDidLoad()
   }
   
+  func configure(_ cell: DocumentListCell, with object: Document) {
+    cell.configure(with: object)
+  }
+  
   func numberOfSections(in tableView: UITableView) -> Int {
-    return 0
+    guard let sections = frc.sections else {
+      return 0
+    }
+    
+    return sections.count
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 0
+    return frc.sections![section].numberOfObjects
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    return DocumentListCell()
+    let cell = tableView.dequeueReusableCell(withIdentifier: "documentCell") as! DocumentListCell
+    configure(cell, with: frc.object(at: indexPath))
+    return cell
   }
   
 }
