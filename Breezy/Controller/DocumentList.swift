@@ -46,9 +46,10 @@ class DocumentList: UIViewController, NSFetchedResultsControllerDelegate, UITabl
   // MARK: Document Methods
   @IBAction func newDocument() {
     // open new document window
-    let newDoc = Document(context: context)
-    newDoc.title = "New"
-    try! context.save()
+    performSegue(withIdentifier: "showDocument", sender: nil)
+//    let newDoc = Document(context: context)
+//    newDoc.title = "New"
+//    try! context.save()
   }
   
   // MARK: Tableview Methods
@@ -73,6 +74,10 @@ class DocumentList: UIViewController, NSFetchedResultsControllerDelegate, UITabl
     let cell = tableView.dequeueReusableCell(withIdentifier: "documentCell") as! DocumentListCell
     configure(cell: cell, at: indexPath)
     return cell
+  }
+  
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    performSegue(withIdentifier: "showDocument", sender: indexPath)
   }
   
   // MARK: NS FRC Methods
@@ -101,6 +106,18 @@ class DocumentList: UIViewController, NSFetchedResultsControllerDelegate, UITabl
       if let indexPath = indexPath, let newIndexPath = newIndexPath {
         tableView.deleteRows(at: [indexPath], with: .fade)
         tableView.insertRows(at: [newIndexPath], with: .fade)
+      }
+    }
+  }
+  
+  // MARK: Segue
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == "showDocument" {
+      let destination = segue.destination as! DocumentVC
+      if let indexPath = sender {
+        destination.document = frc.fetchedObjects![(indexPath as! IndexPath).row]
+      } else {
+        destination.document = nil
       }
     }
   }

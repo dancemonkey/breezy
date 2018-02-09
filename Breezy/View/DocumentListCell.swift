@@ -11,9 +11,9 @@ import UIKit
 class DocumentListCell: UITableViewCell {
   
   @IBOutlet weak var titleLbl: UILabel!
-  var previewLbl: UILabel!
-  var creationLbl: UILabel!
-  var tagView: UIView!
+  @IBOutlet weak var previewLbl: UILabel!
+  @IBOutlet weak var creationLbl: UILabel!
+  @IBOutlet weak var tagView: UIView!
   
   override func awakeFromNib() {
     super.awakeFromNib()
