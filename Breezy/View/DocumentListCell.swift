@@ -10,7 +10,7 @@ import UIKit
 
 class DocumentListCell: UITableViewCell {
   
-  var titleLbl: UILabel!
+  @IBOutlet weak var titleLbl: UILabel!
   var previewLbl: UILabel!
   var creationLbl: UILabel!
   var tagView: UIView!
@@ -22,8 +22,8 @@ class DocumentListCell: UITableViewCell {
   
   func configure(with document: Document) {
     titleLbl.text = document.title
-    previewLbl.text = document.text
-    creationLbl.text = String(describing: document.creation)
+//    previewLbl.text = document.text
+//    creationLbl.text = String(describing: document.creation)
     // TODO: tagView to show all tags this doc is... tagged with
   }
   

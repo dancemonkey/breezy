@@ -9,47 +9,69 @@
 import UIKit
 import CoreData
 
-class DocumentList: UIViewController, NSFetchedResultsControllerDelegate, UITableViewDataSource {
+class DocumentList: UIViewController, NSFetchedResultsControllerDelegate, UITableViewDataSource, UITableViewDelegate {
   
   // TODO: call new document command on every launch
   
   // MARK: Properties
   @IBOutlet weak var tableView: UITableView!
   
-  var frc: NSFetchedResultsController<Document> {
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    let fetchRequest: NSFetchRequest<Document> = Document.fetchRequest()
-    fetchRequest.sortDescriptors = [NSSortDescriptor(key: "creation", ascending: true)]
-    let fetchedResultsController = NSFetchedResultsController<Document>(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
-    return fetchedResultsController
-  }
+  let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+  
+  var frc: NSFetchedResultsController<Document>!
   
   // MARK: App Start
   override func viewDidLoad() {
     super.viewDidLoad()
+    tableView.dataSource = self
+    tableView.delegate = self
+    frc = initializeFRC()
+    frc.delegate = self
+    do {
+      try frc.performFetch()
+      print("fetched")
+    } catch {
+      print("no fetchie")
+    }
+    tableView.reloadData()
+  }
+  
+  func initializeFRC() -> NSFetchedResultsController<Document> {
+    let fetchRequest: NSFetchRequest<Document> = Document.fetchRequest()
+    fetchRequest.sortDescriptors = [NSSortDescriptor(key: "creation", ascending: true)]
+    let fetchedResultsController: NSFetchedResultsController<Document> = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+    return fetchedResultsController
+  }
+  
+  // MARK: Document Methods
+  @IBAction func newDocument() {
+    // open new document window
+    let newDoc = Document(context: context)
+    newDoc.title = "New"
+    try! context.save()
   }
   
   // MARK: Tableview Methods
   
-  func configure(_ cell: DocumentListCell, with object: Document) {
-    cell.configure(with: object)
+  func configure(cell: DocumentListCell, at indexPath: IndexPath) {
+    cell.configure(with: frc.object(at: indexPath))
   }
   
   func numberOfSections(in tableView: UITableView) -> Int {
-    guard let sections = frc.sections else {
-      return 0
-    }
-    
-    return sections.count
+    return 1
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return frc.sections![section].numberOfObjects
+    guard let documents = frc.fetchedObjects else {
+      return 0
+    }
+    print("document count = \(documents.count)")
+    return documents.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "documentCell") as! DocumentListCell
-    configure(cell, with: frc.object(at: indexPath))
+    configure(cell: cell, at: indexPath)
     return cell
   }
   
@@ -64,16 +86,22 @@ class DocumentList: UIViewController, NSFetchedResultsControllerDelegate, UITabl
   }
   
   func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-    
-    switch type {
+    switch (type) {
     case .update:
-      // update table
-    case .move:
-      // update table
-    case .delete:
-      // update table
+      tableView.reloadRows(at: [indexPath!], with: .fade)
     case .insert:
-      // update table
+      if let indexPath = newIndexPath {
+        tableView.insertRows(at: [indexPath], with: .fade)
+      }
+    case .delete:
+      if let indexPath = indexPath {
+        tableView.deleteRows(at: [indexPath], with: .fade)
+      }
+    case .move:
+      if let indexPath = indexPath, let newIndexPath = newIndexPath {
+        tableView.deleteRows(at: [indexPath], with: .fade)
+        tableView.insertRows(at: [newIndexPath], with: .fade)
+      }
     }
   }
   
