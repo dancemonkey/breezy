@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		104FB3A020378D81005FEE7D /* TagLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104FB39F20378D81005FEE7D /* TagLabel.swift */; };
+		104FB3A220378DF0005FEE7D /* CellHeadingLable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104FB3A120378DF0005FEE7D /* CellHeadingLable.swift */; };
+		104FB3A420378E22005FEE7D /* PreviewLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104FB3A320378E22005FEE7D /* PreviewLabel.swift */; };
+		104FB3A6203791A9005FEE7D /* DocumentTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104FB3A5203791A9005FEE7D /* DocumentTextView.swift */; };
 		106124E22027BAD200F10338 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106124E12027BAD200F10338 /* AppDelegate.swift */; };
 		106124E42027BAD200F10338 /* DocumentList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106124E32027BAD200F10338 /* DocumentList.swift */; };
 		106124E72027BAD200F10338 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 106124E52027BAD200F10338 /* Main.storyboard */; };
@@ -43,6 +47,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		104FB39F20378D81005FEE7D /* TagLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagLabel.swift; sourceTree = "<group>"; };
+		104FB3A120378DF0005FEE7D /* CellHeadingLable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellHeadingLable.swift; sourceTree = "<group>"; };
+		104FB3A320378E22005FEE7D /* PreviewLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewLabel.swift; sourceTree = "<group>"; };
+		104FB3A5203791A9005FEE7D /* DocumentTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentTextView.swift; sourceTree = "<group>"; };
 		106124DE2027BAD200F10338 /* Breezy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Breezy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		106124E12027BAD200F10338 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		106124E32027BAD200F10338 /* DocumentList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentList.swift; sourceTree = "<group>"; };
@@ -163,6 +171,10 @@
 				106125272027BE7300F10338 /* DocumentListCell.swift */,
 				1061252B2027BFA600F10338 /* DocumentView.swift */,
 				1061252D2027C0DD00F10338 /* DocumentListTV.swift */,
+				104FB39F20378D81005FEE7D /* TagLabel.swift */,
+				104FB3A120378DF0005FEE7D /* CellHeadingLable.swift */,
+				104FB3A320378E22005FEE7D /* PreviewLabel.swift */,
+				104FB3A5203791A9005FEE7D /* DocumentTextView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -310,12 +322,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				104FB3A220378DF0005FEE7D /* CellHeadingLable.swift in Sources */,
 				106125282027BE7300F10338 /* DocumentListCell.swift in Sources */,
 				1061252A2027BF9600F10338 /* DocumentVC.swift in Sources */,
 				106124EA2027BAD200F10338 /* Breezy.xcdatamodeld in Sources */,
 				106125222027BCD100F10338 /* Document+CoreDataProperties.swift in Sources */,
 				106124E42027BAD200F10338 /* DocumentList.swift in Sources */,
 				1061252E2027C0DD00F10338 /* DocumentListTV.swift in Sources */,
+				104FB3A6203791A9005FEE7D /* DocumentTextView.swift in Sources */,
+				104FB3A420378E22005FEE7D /* PreviewLabel.swift in Sources */,
+				104FB3A020378D81005FEE7D /* TagLabel.swift in Sources */,
 				106125212027BCD100F10338 /* Document+CoreDataClass.swift in Sources */,
 				1061252C2027BFA600F10338 /* DocumentView.swift in Sources */,
 				106125242027BCD100F10338 /* Tag+CoreDataProperties.swift in Sources */,

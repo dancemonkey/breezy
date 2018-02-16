@@ -21,6 +21,7 @@ extension Document {
   @NSManaged public var text: String?
   @NSManaged public var creation: NSDate?
   @NSManaged public var tags: NSSet?
+  // TODO: add "last updated" property
   
 }
 

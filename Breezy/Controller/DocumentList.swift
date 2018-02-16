@@ -15,12 +15,23 @@ class DocumentList: UIViewController, NSFetchedResultsControllerDelegate, UITabl
   
   // MARK: Properties
   @IBOutlet weak var tableView: UITableView!
+  @IBOutlet weak var newBtn: UIBarButtonItem!
   
   let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
   
   var frc: NSFetchedResultsController<Document>!
   
   // MARK: App Start
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    
+    // BELOW IS HACK TO FIX GRAYED-OUT UIBARBUTTONITEM BUG
+    // https://forums.developer.apple.com/thread/75521
+    newBtn.isEnabled = false
+    newBtn.isEnabled = true
+  }
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     tableView.dataSource = self
@@ -47,9 +58,6 @@ class DocumentList: UIViewController, NSFetchedResultsControllerDelegate, UITabl
   @IBAction func newDocument() {
     // open new document window
     performSegue(withIdentifier: "showDocument", sender: nil)
-//    let newDoc = Document(context: context)
-//    newDoc.title = "New"
-//    try! context.save()
   }
   
   // MARK: Tableview Methods
@@ -66,7 +74,6 @@ class DocumentList: UIViewController, NSFetchedResultsControllerDelegate, UITabl
     guard let documents = frc.fetchedObjects else {
       return 0
     }
-    print("document count = \(documents.count)")
     return documents.count
   }
   
@@ -78,6 +85,17 @@ class DocumentList: UIViewController, NSFetchedResultsControllerDelegate, UITabl
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     performSegue(withIdentifier: "showDocument", sender: indexPath)
+  }
+  
+  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    if editingStyle == .delete {
+      context.delete(frc.object(at: indexPath))
+      do {
+        try context.save()
+      } catch {
+        print("failure to delete")
+      }
+    }
   }
   
   // MARK: NS FRC Methods
@@ -119,6 +137,7 @@ class DocumentList: UIViewController, NSFetchedResultsControllerDelegate, UITabl
       } else {
         destination.document = nil
       }
+      destination.context = self.context
     }
   }
   

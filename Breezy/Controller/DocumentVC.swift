@@ -7,14 +7,21 @@
 //
 
 import UIKit
+import CoreData
 
 class DocumentVC: UIViewController {
   
-  @IBOutlet weak var textView: UITextView!
+  @IBOutlet weak var textView: DocumentTextView!
+  var context: NSManagedObjectContext!
   var document: Document?
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    defer {
+      let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.done))
+      self.navigationItem.rightBarButtonItem = doneBtn
+    }
     
-  override func viewDidLoad() {
-    super.viewDidLoad()
     guard let doc = document else {
       textView.text = ""
       self.title = "New Document"
@@ -23,10 +30,37 @@ class DocumentVC: UIViewController {
     textView.text = doc.text
     self.title = doc.title
   }
+    
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    
+  }
   
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-    // Dispose of any resources that can be recreated.
+  @objc func done() {
+    defer {
+      navigationController?.popViewController(animated: true)
+    }
+    
+    guard let doc = document else {
+      let newDoc = Document(context: context)
+      newDoc.text = textView.text
+      newDoc.title = "Placeholder"
+      newDoc.creation = Date() as NSDate
+      do {
+        try context.save()
+      } catch {
+        print("oops document saving didn't work!")
+      }
+      return
+    }
+    doc.text = textView.text
+    doc.title = "Placeholder"
+    do {
+      try context.save()
+    } catch {
+      print("oops document saving didn't work!")
+    }
+    
   }
   
 }

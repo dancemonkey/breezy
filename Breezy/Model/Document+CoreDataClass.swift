@@ -24,6 +24,15 @@ public class Document: NSManagedObject {
     tag.addToDocuments(self)
   }
   
+  func getTagText() -> String {
+    var tagText = ""
+    guard let _ = self.tags else { return "" }
+    for tag in tags! {
+      tagText = tagText + "\(tag), "
+    }
+    return tagText
+  }
+  
   // TODO: function to return truncated preview of text
   // TODO: func to return friendly date string for tableCells
   
