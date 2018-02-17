@@ -36,11 +36,12 @@ class DocumentList: UIViewController, NSFetchedResultsControllerDelegate, UITabl
     super.viewDidLoad()
     tableView.dataSource = self
     tableView.delegate = self
+    tableView.estimatedRowHeight = 75
+    
     frc = initializeFRC()
     frc.delegate = self
     do {
       try frc.performFetch()
-      print("fetched")
     } catch {
       print("no fetchie")
     }

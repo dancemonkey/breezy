@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		100608F920385EF300A06C94 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100608F820385EF300A06C94 /* Style.swift */; };
 		104FB3A020378D81005FEE7D /* TagLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104FB39F20378D81005FEE7D /* TagLabel.swift */; };
 		104FB3A220378DF0005FEE7D /* CellHeadingLable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104FB3A120378DF0005FEE7D /* CellHeadingLable.swift */; };
 		104FB3A420378E22005FEE7D /* PreviewLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104FB3A320378E22005FEE7D /* PreviewLabel.swift */; };
@@ -47,6 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		100608F820385EF300A06C94 /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
 		104FB39F20378D81005FEE7D /* TagLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagLabel.swift; sourceTree = "<group>"; };
 		104FB3A120378DF0005FEE7D /* CellHeadingLable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellHeadingLable.swift; sourceTree = "<group>"; };
 		104FB3A320378E22005FEE7D /* PreviewLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewLabel.swift; sourceTree = "<group>"; };
@@ -100,6 +102,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		100608F720385EDF00A06C94 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				100608F820385EF300A06C94 /* Style.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
 		106124D52027BAD200F10338 = {
 			isa = PBXGroup;
 			children = (
@@ -123,6 +133,7 @@
 		106124E02027BAD200F10338 /* Breezy */ = {
 			isa = PBXGroup;
 			children = (
+				100608F720385EDF00A06C94 /* Util */,
 				106124E12027BAD200F10338 /* AppDelegate.swift */,
 				106125122027BB4900F10338 /* Model */,
 				106125132027BB5300F10338 /* View */,
@@ -329,6 +340,7 @@
 				106125222027BCD100F10338 /* Document+CoreDataProperties.swift in Sources */,
 				106124E42027BAD200F10338 /* DocumentList.swift in Sources */,
 				1061252E2027C0DD00F10338 /* DocumentListTV.swift in Sources */,
+				100608F920385EF300A06C94 /* Style.swift in Sources */,
 				104FB3A6203791A9005FEE7D /* DocumentTextView.swift in Sources */,
 				104FB3A420378E22005FEE7D /* PreviewLabel.swift in Sources */,
 				104FB3A020378D81005FEE7D /* TagLabel.swift in Sources */,

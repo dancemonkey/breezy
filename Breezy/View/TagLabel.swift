@@ -12,7 +12,8 @@ class TagLabel: UILabel {
   
   override func awakeFromNib() {
     super.awakeFromNib()
-    self.font = UIFont(name: "Avenir", size: 12)
+    self.font = UIFont(name: FontStyle.tag.face, size: FontStyle.tag.size)
+    self.textColor = FontStyle.tag.color
   }
   
 }

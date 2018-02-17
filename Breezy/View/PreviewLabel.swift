@@ -11,7 +11,7 @@ import UIKit
 class PreviewLabel: UILabel {
 
   override func awakeFromNib() {
-    self.font = UIFont(name: "Avenir", size: 12)
+    self.font = UIFont(name: FontStyle.preview.face, size: FontStyle.preview.size)
   }
 
 }

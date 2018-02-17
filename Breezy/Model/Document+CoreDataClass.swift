@@ -24,11 +24,11 @@ public class Document: NSManagedObject {
     tag.addToDocuments(self)
   }
   
-  func getTagText() -> String {
+  func getTagText() -> String? {
     var tagText = ""
-    guard let _ = self.tags else { return "" }
+    guard let _ = self.tags else { return nil }
     for tag in tags! {
-      tagText = tagText + "\(tag), "
+      tagText = tagText + "\(String(describing: (tag as! Tag).name!)) "
     }
     return tagText
   }

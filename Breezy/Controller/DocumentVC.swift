@@ -20,6 +20,7 @@ class DocumentVC: UIViewController {
     defer {
       let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.done))
       self.navigationItem.rightBarButtonItem = doneBtn
+      textView.becomeFirstResponder()
     }
     
     guard let doc = document else {
@@ -45,6 +46,9 @@ class DocumentVC: UIViewController {
       let newDoc = Document(context: context)
       newDoc.text = textView.text
       newDoc.title = "Placeholder"
+      let tempTag = Tag(context: context)
+      tempTag.name = "TempTag"
+      newDoc.addToTags(tempTag)
       newDoc.creation = Date() as NSDate
       do {
         try context.save()
