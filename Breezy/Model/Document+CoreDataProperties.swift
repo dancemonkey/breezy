@@ -2,7 +2,7 @@
 //  Document+CoreDataProperties.swift
 //  Breezy
 //
-//  Created by Drew Lanning on 2/4/18.
+//  Created by Drew Lanning on 2/17/18.
 //  Copyright © 2018 Drew Lanning. All rights reserved.
 //
 //
@@ -12,32 +12,32 @@ import CoreData
 
 
 extension Document {
-  
-  @nonobjc public class func fetchRequest() -> NSFetchRequest<Document> {
-    return NSFetchRequest<Document>(entityName: "Document")
-  }
-  
-  @NSManaged public var title: String?
-  @NSManaged public var text: String?
-  @NSManaged public var creation: NSDate?
-  @NSManaged public var tags: NSSet?
-  // TODO: add "last updated" property
-  
+
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<Document> {
+        return NSFetchRequest<Document>(entityName: "Document")
+    }
+
+    @NSManaged public var creation: NSDate?
+    @NSManaged public var text: String?
+    @NSManaged public var title: String?
+    @NSManaged public var lastUpdated: NSDate?
+    @NSManaged public var tags: NSSet?
+
 }
 
 // MARK: Generated accessors for tags
 extension Document {
-  
-  @objc(addTagsObject:)
-  @NSManaged public func addToTags(_ value: Tag)
-  
-  @objc(removeTagsObject:)
-  @NSManaged public func removeFromTags(_ value: Tag)
-  
-  @objc(addTags:)
-  @NSManaged public func addToTags(_ values: NSSet)
-  
-  @objc(removeTags:)
-  @NSManaged public func removeFromTags(_ values: NSSet)
-  
+
+    @objc(addTagsObject:)
+    @NSManaged public func addToTags(_ value: Tag)
+
+    @objc(removeTagsObject:)
+    @NSManaged public func removeFromTags(_ value: Tag)
+
+    @objc(addTags:)
+    @NSManaged public func addToTags(_ values: NSSet)
+
+    @objc(removeTags:)
+    @NSManaged public func removeFromTags(_ values: NSSet)
+
 }

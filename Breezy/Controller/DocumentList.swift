@@ -30,6 +30,8 @@ class DocumentList: UIViewController, NSFetchedResultsControllerDelegate, UITabl
     // https://forums.developer.apple.com/thread/75521
     newBtn.isEnabled = false
     newBtn.isEnabled = true
+    
+    navigationController?.navigationBar.prefersLargeTitles = true
   }
   
   override func viewDidLoad() {
@@ -50,7 +52,7 @@ class DocumentList: UIViewController, NSFetchedResultsControllerDelegate, UITabl
   
   func initializeFRC() -> NSFetchedResultsController<Document> {
     let fetchRequest: NSFetchRequest<Document> = Document.fetchRequest()
-    fetchRequest.sortDescriptors = [NSSortDescriptor(key: "creation", ascending: true)]
+    fetchRequest.sortDescriptors = [NSSortDescriptor(key: "lastUpdated", ascending: false)]
     let fetchedResultsController: NSFetchedResultsController<Document> = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
     return fetchedResultsController
   }
@@ -90,7 +92,9 @@ class DocumentList: UIViewController, NSFetchedResultsControllerDelegate, UITabl
   
   func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
     if editingStyle == .delete {
-      context.delete(frc.object(at: indexPath))
+      let doc = frc.object(at: indexPath)
+      doc.clearTags()
+      context.delete(doc)
       do {
         try context.save()
       } catch {

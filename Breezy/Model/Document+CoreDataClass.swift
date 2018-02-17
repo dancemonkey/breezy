@@ -33,6 +33,13 @@ public class Document: NSManagedObject {
     return tagText
   }
   
+  func clearTags() {
+    guard let tags = self.tags else { return }
+    for tag in tags {
+      (tag as! Tag).removeFromDocuments(self)
+    }
+  }
+  
   // TODO: function to return truncated preview of text
   // TODO: func to return friendly date string for tableCells
   

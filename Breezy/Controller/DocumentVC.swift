@@ -21,15 +21,16 @@ class DocumentVC: UIViewController {
       let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.done))
       self.navigationItem.rightBarButtonItem = doneBtn
       textView.becomeFirstResponder()
+      self.title = ""
+      navigationController?.navigationBar.prefersLargeTitles = false
     }
     
     guard let doc = document else {
       textView.text = ""
-      self.title = "New Document"
+      self.title = ""
       return
     }
     textView.text = doc.text
-    self.title = doc.title
   }
     
   override func viewDidLoad() {
@@ -45,11 +46,12 @@ class DocumentVC: UIViewController {
     guard let doc = document else {
       let newDoc = Document(context: context)
       newDoc.text = textView.text
-      newDoc.title = "Placeholder"
       let tempTag = Tag(context: context)
       tempTag.name = "TempTag"
       newDoc.addToTags(tempTag)
+      tempTag.addToDocuments(newDoc)
       newDoc.creation = Date() as NSDate
+      newDoc.lastUpdated = Date() as NSDate
       do {
         try context.save()
       } catch {
@@ -58,7 +60,9 @@ class DocumentVC: UIViewController {
       return
     }
     doc.text = textView.text
-    doc.title = "Placeholder"
+    doc.lastUpdated = Date() as NSDate
+    // TODO: also need to update tags if any new tags have been selected
+    // TODO: handle that after tag selection screen? flag 'tag selected' and handle here?
     do {
       try context.save()
     } catch {
