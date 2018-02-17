@@ -12,6 +12,9 @@ import CoreData
 class DocumentVC: UIViewController {
   
   @IBOutlet weak var textView: DocumentTextView!
+  @IBOutlet weak var tagLbl: TagLabel!
+  @IBOutlet weak var tagView: UIView!
+  
   var context: NSManagedObjectContext!
   var document: Document?
   
@@ -23,14 +26,22 @@ class DocumentVC: UIViewController {
       textView.becomeFirstResponder()
       self.title = ""
       navigationController?.navigationBar.prefersLargeTitles = false
+      navigationController?.setToolbarHidden(true, animated: true)
     }
     
     guard let doc = document else {
       textView.text = ""
       self.title = ""
+      tagLbl.text = "No tags"
       return
     }
     textView.text = doc.text
+    
+    if let tags = doc.getTagText() {
+      tagLbl.text = tags
+    } else {
+      tagLbl.text = "No tags"
+    }
   }
     
   override func viewDidLoad() {
