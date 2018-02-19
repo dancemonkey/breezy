@@ -25,13 +25,13 @@ class DocumentVC: UIViewController {
     defer {
       let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.done))
       self.navigationItem.rightBarButtonItem = doneBtn
-      textView.becomeFirstResponder()
       self.title = ""
       navigationController?.navigationBar.prefersLargeTitles = false
     }
     
     guard let doc = document else {
       textView.text = ""
+      textView.becomeFirstResponder()
       return
     }
     textView.text = doc.text
