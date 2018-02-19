@@ -14,6 +14,7 @@ class DocumentVC: UIViewController {
   @IBOutlet weak var textView: DocumentTextView!
   @IBOutlet weak var tagView: TagShareView!
   @IBOutlet weak var tagViewBtmConstraint: NSLayoutConstraint!
+  @IBOutlet weak var shareBtn: UIBarButtonItem!
   
   var context: NSManagedObjectContext!
   var document: Document?
@@ -27,7 +28,6 @@ class DocumentVC: UIViewController {
       textView.becomeFirstResponder()
       self.title = ""
       navigationController?.navigationBar.prefersLargeTitles = false
-      navigationController?.setToolbarHidden(true, animated: true)
     }
     
     guard let doc = document else {
@@ -52,13 +52,15 @@ class DocumentVC: UIViewController {
   
   @objc func keyboardWillShow(notification: NSNotification) {
     if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-      tagViewBtmConstraint.constant -= keyboardSize.height
+      print(tagViewBtmConstraint.constant)
+      tagViewBtmConstraint.constant += keyboardSize.height - (navigationController?.toolbar.frame.height)!
+      print(tagViewBtmConstraint.constant)
     }
   }
   
   @objc func keyboardWillHide(notification: NSNotification) {
     if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-      tagViewBtmConstraint.constant += keyboardSize.height
+      tagViewBtmConstraint.constant -= keyboardSize.height + (navigationController?.toolbar.frame.height)!
     }
   }
   

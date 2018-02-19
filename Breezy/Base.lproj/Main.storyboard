@@ -17,19 +17,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ReL-eg-QWV" customClass="DocumentListTV" customModule="Breezy" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="116" width="375" height="507"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="70" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ReL-eg-QWV" customClass="DocumentListTV" customModule="Breezy" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="120" width="375" height="503"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="documentCell" rowHeight="75" id="33t-xf-s9S" customClass="DocumentListCell" customModule="Breezy" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="75"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="documentCell" rowHeight="70" id="33t-xf-s9S" customClass="DocumentListCell" customModule="Breezy" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="33t-xf-s9S" id="7od-Pq-Et6">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="75"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uy4-gG-VEM" customClass="TagLabel" customModule="Breezy" customModuleProvider="target">
-                                                    <rect key="frame" x="8" y="50.5" width="351" height="20.5"/>
+                                                    <rect key="frame" x="16" y="40.5" width="343" height="25.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20.5" id="Z1c-RG-7gG"/>
                                                     </constraints>
@@ -37,14 +37,14 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6M7-A5-u6d" customClass="PreviewLabel" customModule="Breezy" customModuleProvider="target">
-                                                    <rect key="frame" x="8" y="4" width="359" height="20.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6M7-A5-u6d" customClass="PreviewLabel" customModule="Breezy" customModuleProvider="target">
+                                                    <rect key="frame" x="16" y="4" width="343" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gp4-O4-lOZ">
-                                                    <rect key="frame" x="25" y="74" width="325" height="1"/>
+                                                    <rect key="frame" x="16" y="69" width="343" height="1"/>
                                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="uB8-wz-YJ4"/>
@@ -54,14 +54,14 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="uy4-gG-VEM" secondAttribute="trailing" constant="16" id="7em-gu-cTB"/>
-                                                <constraint firstItem="Gp4-O4-lOZ" firstAttribute="width" secondItem="7od-Pq-Et6" secondAttribute="width" constant="-50" id="Ezy-jQ-BwY"/>
-                                                <constraint firstItem="uy4-gG-VEM" firstAttribute="leading" secondItem="7od-Pq-Et6" secondAttribute="leading" constant="8" id="Fxs-4d-ThC"/>
-                                                <constraint firstAttribute="trailing" secondItem="6M7-A5-u6d" secondAttribute="trailing" constant="8" id="Lkg-3S-v8W"/>
+                                                <constraint firstItem="Gp4-O4-lOZ" firstAttribute="width" secondItem="7od-Pq-Et6" secondAttribute="width" constant="-32" id="Ezy-jQ-BwY"/>
+                                                <constraint firstItem="uy4-gG-VEM" firstAttribute="leading" secondItem="7od-Pq-Et6" secondAttribute="leading" constant="16" id="Fxs-4d-ThC"/>
+                                                <constraint firstItem="uy4-gG-VEM" firstAttribute="top" relation="lessThanOrEqual" secondItem="6M7-A5-u6d" secondAttribute="bottom" constant="16" id="Iyu-HH-834"/>
+                                                <constraint firstAttribute="trailing" secondItem="6M7-A5-u6d" secondAttribute="trailing" constant="16" id="M6T-YE-3V9"/>
                                                 <constraint firstItem="Gp4-O4-lOZ" firstAttribute="centerX" secondItem="7od-Pq-Et6" secondAttribute="centerX" id="N7N-C0-cco"/>
-                                                <constraint firstItem="6M7-A5-u6d" firstAttribute="leading" secondItem="7od-Pq-Et6" secondAttribute="leading" constant="8" id="U9j-SV-fPO"/>
+                                                <constraint firstItem="6M7-A5-u6d" firstAttribute="leading" secondItem="7od-Pq-Et6" secondAttribute="leading" constant="16" id="U9j-SV-fPO"/>
                                                 <constraint firstAttribute="bottom" secondItem="uy4-gG-VEM" secondAttribute="bottom" constant="4" id="XdG-5P-mWp"/>
                                                 <constraint firstItem="6M7-A5-u6d" firstAttribute="top" secondItem="7od-Pq-Et6" secondAttribute="top" constant="4" id="aos-AC-Thi"/>
-                                                <constraint firstItem="uy4-gG-VEM" firstAttribute="top" relation="greaterThanOrEqual" secondItem="6M7-A5-u6d" secondAttribute="bottom" constant="8" id="poG-fH-4jA"/>
                                                 <constraint firstAttribute="bottom" secondItem="Gp4-O4-lOZ" secondAttribute="bottom" id="s9i-1q-5OF"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -78,7 +78,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ReL-eg-QWV" secondAttribute="bottom" id="HuY-Ur-Ss3"/>
-                            <constraint firstItem="ReL-eg-QWV" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="SMs-vf-Nfj"/>
+                            <constraint firstItem="ReL-eg-QWV" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="4" id="SMs-vf-Nfj"/>
                             <constraint firstItem="ReL-eg-QWV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="cWD-WF-DkL"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ReL-eg-QWV" secondAttribute="trailing" id="nXg-NE-nVT"/>
                         </constraints>
@@ -126,32 +126,20 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iQu-hl-VZJ" customClass="TagShareView" customModule="Breezy" customModuleProvider="target">
                                 <rect key="frame" x="8" y="583" width="359" height="40"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tag Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jNE-ju-9e0" customClass="TagLabel" customModule="Breezy" customModuleProvider="target">
-                                        <rect key="frame" x="277" y="10" width="74" height="20.5"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tag Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jNE-ju-9e0" customClass="TagLabel" customModule="Breezy" customModuleProvider="target">
+                                        <rect key="frame" x="281" y="10" width="74" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ag3-o8-h0Q">
-                                        <rect key="frame" x="8" y="2" width="45" height="36"/>
-                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
-                                        <state key="normal" title="Share">
-                                            <color key="titleColor" red="0.32156862749999998" green="0.38431372549999998" blue="0.4431372549" alpha="1" colorSpace="deviceRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="sharedTappedWithSender:" destination="iQu-hl-VZJ" eventType="touchUpInside" id="hc8-HE-1Fl"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="ag3-o8-h0Q" firstAttribute="centerY" secondItem="iQu-hl-VZJ" secondAttribute="centerY" id="4bH-lR-sb1"/>
-                                    <constraint firstItem="ag3-o8-h0Q" firstAttribute="leading" secondItem="iQu-hl-VZJ" secondAttribute="leading" constant="8" id="C8y-q3-oCZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="jNE-ju-9e0" secondAttribute="trailing" constant="4" id="DID-L4-fZd"/>
+                                    <constraint firstItem="jNE-ju-9e0" firstAttribute="centerY" secondItem="iQu-hl-VZJ" secondAttribute="centerY" id="hxb-Dd-3Ox"/>
                                     <constraint firstAttribute="height" constant="40" id="wnY-D8-YZj"/>
                                 </constraints>
                                 <connections>
-                                    <outlet property="shareBtn" destination="ag3-o8-h0Q" id="VJS-nV-yQM"/>
                                     <outlet property="tagLbl" destination="jNE-ju-9e0" id="nc5-Nb-qKX"/>
                                 </connections>
                             </view>
@@ -163,16 +151,19 @@
                             <constraint firstItem="iQu-hl-VZJ" firstAttribute="top" secondItem="Jif-sq-7XC" secondAttribute="bottom" constant="8" id="Jlf-xC-ZIK"/>
                             <constraint firstItem="Jif-sq-7XC" firstAttribute="top" secondItem="58d-64-PMs" secondAttribute="top" constant="8" id="NTF-1g-2cy"/>
                             <constraint firstItem="58d-64-PMs" firstAttribute="trailing" secondItem="iQu-hl-VZJ" secondAttribute="trailing" constant="8" id="SL8-VY-SvF"/>
+                            <constraint firstItem="58d-64-PMs" firstAttribute="bottom" secondItem="iQu-hl-VZJ" secondAttribute="bottom" id="Tl8-5D-cmd"/>
                             <constraint firstItem="Jif-sq-7XC" firstAttribute="leading" secondItem="58d-64-PMs" secondAttribute="leading" constant="8" id="WKO-zl-2xe"/>
-                            <constraint firstItem="iQu-hl-VZJ" firstAttribute="bottom" secondItem="58d-64-PMs" secondAttribute="bottom" id="tdD-Aj-Pz6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="58d-64-PMs"/>
                     </view>
-                    <toolbarItems/>
+                    <toolbarItems>
+                        <barButtonItem systemItem="action" id="tgD-AO-cqX"/>
+                    </toolbarItems>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="shareBtn" destination="tgD-AO-cqX" id="vJC-iy-U82"/>
                         <outlet property="tagView" destination="iQu-hl-VZJ" id="qIf-uz-m42"/>
-                        <outlet property="tagViewBtmConstraint" destination="tdD-Aj-Pz6" id="e9r-57-wug"/>
+                        <outlet property="tagViewBtmConstraint" destination="Tl8-5D-cmd" id="TzO-Jx-8XE"/>
                         <outlet property="textView" destination="Jif-sq-7XC" id="4XF-27-hl2"/>
                     </connections>
                 </viewController>

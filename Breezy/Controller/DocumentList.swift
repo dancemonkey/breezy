@@ -38,7 +38,6 @@ class DocumentList: UIViewController, NSFetchedResultsControllerDelegate, UITabl
     super.viewDidLoad()
     tableView.dataSource = self
     tableView.delegate = self
-    tableView.estimatedRowHeight = 75
     
     frc = initializeFRC()
     frc.delegate = self
@@ -59,7 +58,6 @@ class DocumentList: UIViewController, NSFetchedResultsControllerDelegate, UITabl
   
   // MARK: Document Methods
   @IBAction func newDocument() {
-    // open new document window
     performSegue(withIdentifier: "showDocument", sender: nil)
   }
   

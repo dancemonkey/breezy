@@ -11,25 +11,22 @@ import UIKit
 class TagShareView: UIView {
   
   @IBOutlet weak var tagLbl: TagLabel!
-  @IBOutlet weak var shareBtn: UIButton!
   
   override func awakeFromNib() {
     super.awakeFromNib()
-    tagLbl.text = "No tag"
-    shareBtn.tintColor = FontStyle.tag.color
-    shareBtn.setTitleColor(FontStyle.tag.color, for: .normal)
+    tagLbl.text = "Tap to add tags"
   }
 
   func configure(with document: Document) {
     guard let tags = document.getTagText() else {
-      tagLbl.text = "No tag"
+      tagLbl.text = "Tap to add tags"
       return
     }
     tagLbl.text = tags
   }
   
-  @IBAction func sharedTapped(sender: UIButton) {
-    print("share tapped")
+  override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+    print("adding new tags")
   }
   
 }

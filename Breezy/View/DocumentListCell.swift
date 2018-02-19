@@ -17,10 +17,6 @@ class DocumentListCell: UITableViewCell {
   
   override func awakeFromNib() {
     super.awakeFromNib()
-        
-//    content.layer.borderColor = UIColor.gray.cgColor
-//    content.layer.borderWidth = 1.0
-//    content.layer.cornerRadius = 4.0
 
   }
   
