@@ -14,6 +14,7 @@ class DocumentVC: UIViewController {
   @IBOutlet weak var textView: DocumentTextView!
   @IBOutlet weak var tagLbl: TagLabel!
   @IBOutlet weak var tagView: UIView!
+  @IBOutlet weak var tagViewBtmConstraint: NSLayoutConstraint!
   
   var context: NSManagedObjectContext!
   var document: Document?
@@ -31,7 +32,6 @@ class DocumentVC: UIViewController {
     
     guard let doc = document else {
       textView.text = ""
-      self.title = ""
       tagLbl.text = "No tags"
       return
     }
@@ -43,10 +43,28 @@ class DocumentVC: UIViewController {
       tagLbl.text = "No tags"
     }
   }
-    
+  
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+    NotificationCenter.default.addObserver(self, selector: #selector(DocumentVC.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(DocumentVC.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+  }
+  
+  @objc func keyboardWillShow(notification: NSNotification) {
+    if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+      tagViewBtmConstraint.constant -= keyboardSize.height
+      print(tagViewBtmConstraint.constant)
+      print(keyboardSize.height)
+      print(keyboardSize)
+//      self.view.frame.origin.y -= keyboardSize.height
+    }
+  }
+  
+  @objc func keyboardWillHide(notification: NSNotification) {
+    if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+      tagViewBtmConstraint.constant += keyboardSize.height
+//      self.view.frame.origin.y += keyboardSize.height
+    }
   }
   
   @objc func done() {
