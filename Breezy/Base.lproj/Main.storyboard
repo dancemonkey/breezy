@@ -123,7 +123,7 @@
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" spellCheckingType="yes"/>
                             </textView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iQu-hl-VZJ">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iQu-hl-VZJ" customClass="TagShareView" customModule="Breezy" customModuleProvider="target">
                                 <rect key="frame" x="8" y="583" width="359" height="40"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tag Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jNE-ju-9e0" customClass="TagLabel" customModule="Breezy" customModuleProvider="target">
@@ -133,11 +133,27 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ag3-o8-h0Q">
+                                        <rect key="frame" x="8" y="2" width="45" height="36"/>
+                                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
+                                        <state key="normal" title="Share">
+                                            <color key="titleColor" red="0.32156862749999998" green="0.38431372549999998" blue="0.4431372549" alpha="1" colorSpace="deviceRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="sharedTappedWithSender:" destination="iQu-hl-VZJ" eventType="touchUpInside" id="hc8-HE-1Fl"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="ag3-o8-h0Q" firstAttribute="centerY" secondItem="iQu-hl-VZJ" secondAttribute="centerY" id="4bH-lR-sb1"/>
+                                    <constraint firstItem="ag3-o8-h0Q" firstAttribute="leading" secondItem="iQu-hl-VZJ" secondAttribute="leading" constant="8" id="C8y-q3-oCZ"/>
                                     <constraint firstAttribute="height" constant="40" id="wnY-D8-YZj"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="shareBtn" destination="ag3-o8-h0Q" id="VJS-nV-yQM"/>
+                                    <outlet property="tagLbl" destination="jNE-ju-9e0" id="nc5-Nb-qKX"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -155,8 +171,7 @@
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="tagLbl" destination="jNE-ju-9e0" id="SPH-Ex-aKd"/>
-                        <outlet property="tagView" destination="iQu-hl-VZJ" id="dW5-nS-i4C"/>
+                        <outlet property="tagView" destination="iQu-hl-VZJ" id="qIf-uz-m42"/>
                         <outlet property="tagViewBtmConstraint" destination="tdD-Aj-Pz6" id="e9r-57-wug"/>
                         <outlet property="textView" destination="Jif-sq-7XC" id="4XF-27-hl2"/>
                     </connections>

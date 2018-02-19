@@ -16,18 +16,18 @@ enum FontStyle {
   var face: String {
     switch self {
     case .tag:
-      return "Avenir"
+      return "Avenir-Oblique"
     case .document:
       return "Avenir"
     case .preview:
-      return "Avenir-Oblique"
+      return "Avenir"
     }
   }
   
   var size: CGFloat {
     switch self {
     case .tag:
-      return 10.0
+      return 12.0
     case .document:
       return 16.0
     case .preview:

@@ -12,8 +12,7 @@ import CoreData
 class DocumentVC: UIViewController {
   
   @IBOutlet weak var textView: DocumentTextView!
-  @IBOutlet weak var tagLbl: TagLabel!
-  @IBOutlet weak var tagView: UIView!
+  @IBOutlet weak var tagView: TagShareView!
   @IBOutlet weak var tagViewBtmConstraint: NSLayoutConstraint!
   
   var context: NSManagedObjectContext!
@@ -21,6 +20,7 @@ class DocumentVC: UIViewController {
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
+    
     defer {
       let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.done))
       self.navigationItem.rightBarButtonItem = doneBtn
@@ -32,16 +32,10 @@ class DocumentVC: UIViewController {
     
     guard let doc = document else {
       textView.text = ""
-      tagLbl.text = "No tags"
       return
     }
     textView.text = doc.text
-    
-    if let tags = doc.getTagText() {
-      tagLbl.text = tags
-    } else {
-      tagLbl.text = "No tags"
-    }
+    tagView.configure(with: doc)
   }
   
   override func viewDidLoad() {
@@ -50,20 +44,21 @@ class DocumentVC: UIViewController {
     NotificationCenter.default.addObserver(self, selector: #selector(DocumentVC.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
   }
   
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+    NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: self.view.window)
+    NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: self.view.window)
+  }
+  
   @objc func keyboardWillShow(notification: NSNotification) {
     if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
       tagViewBtmConstraint.constant -= keyboardSize.height
-      print(tagViewBtmConstraint.constant)
-      print(keyboardSize.height)
-      print(keyboardSize)
-//      self.view.frame.origin.y -= keyboardSize.height
     }
   }
   
   @objc func keyboardWillHide(notification: NSNotification) {
     if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
       tagViewBtmConstraint.constant += keyboardSize.height
-//      self.view.frame.origin.y += keyboardSize.height
     }
   }
   
