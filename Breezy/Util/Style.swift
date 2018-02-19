@@ -29,9 +29,9 @@ enum FontStyle {
     case .tag:
       return 12.0
     case .document:
-      return 16.0
+      return 18.0
     case .preview:
-      return 13.0
+      return 15.0
     }
   }
   

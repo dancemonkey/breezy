@@ -52,9 +52,7 @@ class DocumentVC: UIViewController {
   
   @objc func keyboardWillShow(notification: NSNotification) {
     if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-      print(tagViewBtmConstraint.constant)
       tagViewBtmConstraint.constant += keyboardSize.height - (navigationController?.toolbar.frame.height)!
-      print(tagViewBtmConstraint.constant)
     }
   }
   
