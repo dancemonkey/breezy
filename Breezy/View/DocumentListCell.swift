@@ -10,10 +10,9 @@ import UIKit
 
 class DocumentListCell: UITableViewCell {
   
-//  @IBOutlet weak var titleLbl: UILabel!
   @IBOutlet weak var previewLbl: UILabel!
   @IBOutlet weak var tagLbl: UILabel!
-//  @IBOutlet weak var creationLbl: UILabel!
+  @IBOutlet weak var updatedLbl: UILabel!
   
   override func awakeFromNib() {
     super.awakeFromNib()
@@ -21,7 +20,6 @@ class DocumentListCell: UITableViewCell {
   }
   
   func configure(with document: Document) {
-//    titleLbl.text = document.title
     previewLbl.text = document.text
     guard let tags = document.getTagText() else {
       tagLbl.isHidden = true
@@ -29,6 +27,7 @@ class DocumentListCell: UITableViewCell {
     }
     tagLbl.text = tags
     tagLbl.isHidden = false
+    updatedLbl.text = document.lastUpdatedPretty()
   }
   
 }
