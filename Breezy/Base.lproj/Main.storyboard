@@ -28,17 +28,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uy4-gG-VEM" customClass="TagLabel" customModule="Breezy" customModuleProvider="target">
-                                                    <rect key="frame" x="317" y="42" width="42" height="24"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="24" id="Z1c-RG-7gG"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6M7-A5-u6d" customClass="PreviewLabel" customModule="Breezy" customModuleProvider="target">
-                                                    <rect key="frame" x="16" y="4" width="343" height="38"/>
+                                                    <rect key="frame" x="16" y="4" width="343" height="41"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -50,25 +41,38 @@
                                                         <constraint firstAttribute="height" constant="1" id="uB8-wz-YJ4"/>
                                                     </constraints>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hJ1-PC-t87" customClass="UpdatedLbl" customModule="Breezy" customModuleProvider="target">
-                                                    <rect key="frame" x="16" y="43.5" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="qla-56-XaI">
+                                                    <rect key="frame" x="16" y="45" width="343" height="20"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hJ1-PC-t87" customClass="UpdatedLbl" customModule="Breezy" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="0.0" width="171.5" height="20"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uy4-gG-VEM" customClass="TagLabel" customModule="Breezy" customModuleProvider="target">
+                                                            <rect key="frame" x="171.5" y="0.0" width="171.5" height="20"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="20" id="vcH-un-YqJ"/>
+                                                    </constraints>
+                                                </stackView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstItem="hJ1-PC-t87" firstAttribute="leading" secondItem="7od-Pq-Et6" secondAttribute="leading" constant="16" id="4vt-a7-ez2"/>
-                                                <constraint firstAttribute="trailing" secondItem="uy4-gG-VEM" secondAttribute="trailing" constant="16" id="7em-gu-cTB"/>
-                                                <constraint firstItem="hJ1-PC-t87" firstAttribute="centerY" secondItem="uy4-gG-VEM" secondAttribute="centerY" id="CYI-T4-pnH"/>
+                                                <constraint firstAttribute="trailing" secondItem="qla-56-XaI" secondAttribute="trailing" constant="16" id="2rL-Cu-qAb"/>
                                                 <constraint firstItem="Gp4-O4-lOZ" firstAttribute="width" secondItem="7od-Pq-Et6" secondAttribute="width" constant="-32" id="Ezy-jQ-BwY"/>
-                                                <constraint firstItem="uy4-gG-VEM" firstAttribute="top" relation="lessThanOrEqual" secondItem="6M7-A5-u6d" secondAttribute="bottom" id="Iyu-HH-834"/>
                                                 <constraint firstAttribute="trailing" secondItem="6M7-A5-u6d" secondAttribute="trailing" constant="16" id="M6T-YE-3V9"/>
+                                                <constraint firstItem="qla-56-XaI" firstAttribute="top" secondItem="6M7-A5-u6d" secondAttribute="bottom" id="MGP-kA-VKQ"/>
                                                 <constraint firstItem="Gp4-O4-lOZ" firstAttribute="centerX" secondItem="7od-Pq-Et6" secondAttribute="centerX" id="N7N-C0-cco"/>
+                                                <constraint firstItem="Gp4-O4-lOZ" firstAttribute="top" secondItem="qla-56-XaI" secondAttribute="bottom" constant="4" id="S1Z-aO-Xp4"/>
                                                 <constraint firstItem="6M7-A5-u6d" firstAttribute="leading" secondItem="7od-Pq-Et6" secondAttribute="leading" constant="16" id="U9j-SV-fPO"/>
-                                                <constraint firstAttribute="bottom" secondItem="uy4-gG-VEM" secondAttribute="bottom" constant="4" id="XdG-5P-mWp"/>
                                                 <constraint firstItem="6M7-A5-u6d" firstAttribute="top" secondItem="7od-Pq-Et6" secondAttribute="top" constant="4" id="aos-AC-Thi"/>
+                                                <constraint firstItem="qla-56-XaI" firstAttribute="leading" secondItem="7od-Pq-Et6" secondAttribute="leading" constant="16" id="lMS-8W-qHI"/>
                                                 <constraint firstAttribute="bottom" secondItem="Gp4-O4-lOZ" secondAttribute="bottom" id="s9i-1q-5OF"/>
                                             </constraints>
                                         </tableViewCellContentView>
