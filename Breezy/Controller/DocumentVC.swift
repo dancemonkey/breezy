@@ -15,6 +15,7 @@ class DocumentVC: UIViewController {
   @IBOutlet weak var tagView: TagShareView!
   @IBOutlet weak var tagViewBtmConstraint: NSLayoutConstraint!
   @IBOutlet weak var shareBtn: UIBarButtonItem!
+  @IBOutlet weak var titleFld: UITextField!
   
   var context: NSManagedObjectContext!
   var document: Document?
@@ -29,10 +30,12 @@ class DocumentVC: UIViewController {
     
     guard let doc = document else {
       textView.text = ""
+      titleFld.text = ""
       textView.becomeFirstResponder()
       return
     }
     textView.text = doc.text
+    titleFld.text = doc.title!
     tagView.configure(with: doc)
   }
   
@@ -67,7 +70,7 @@ class DocumentVC: UIViewController {
     
     guard let doc = document else {
       let newDoc = Document(context: context)
-      newDoc.setText(to: textView.text)
+      newDoc.setText(to: textView.text, withTitle: titleFld.text!)
       let tempTag = Tag(context: context)
       tempTag.name = "TempTag"
       newDoc.addToTags(tempTag)
@@ -81,7 +84,7 @@ class DocumentVC: UIViewController {
       }
       return
     }
-    doc.setText(to: textView.text)
+    doc.setText(to: textView.text, withTitle: titleFld.text!)
     doc.lastUpdated = Date() as NSDate
     // TODO: also need to update tags if any new tags have been selected
     // TODO: handle that after tag selection screen? flag 'tag selected' and handle here?

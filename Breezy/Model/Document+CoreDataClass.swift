@@ -15,9 +15,9 @@ public class Document: NSManagedObject {
   
   var editing: Bool = false
   
-  func setText(to text: String) {
+  func setText(to text: String, withTitle title: String) {
     self.text = text
-    setTitle()
+    setTitle(to: title)
   }
   
   func setTag(to tag: Tag) {
@@ -47,23 +47,8 @@ public class Document: NSManagedObject {
     return formatter.string(from: self.lastUpdated! as Date)
   }
   
-  private func setTitle() {
-    guard let text = self.text else {
-      self.title = "Empty Document"
-      return
-    }
-    let range = text.startIndex ..< text.endIndex
-    var title: String = ""
-    var words = [String]()
-    text.enumerateSubstrings(in: range, options: .byWords) { (word, _, _, _) in
-      guard let w = word else { return }
-      words.append(w)
-    }
-    
-    for (idx, word) in words.enumerated() where idx <= 2 {
-      title += "\(word) "
-    }
-    self.title = title
+  private func setTitle(to: String) {
+    self.title = to
   }
   
   // TODO: func to return friendly date string for tableCells

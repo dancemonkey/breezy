@@ -30,6 +30,7 @@
 		1061252E2027C0DD00F10338 /* DocumentListTV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1061252D2027C0DD00F10338 /* DocumentListTV.swift */; };
 		10AF77D8203A80F3002A4B3C /* TagShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AF77D7203A80F3002A4B3C /* TagShareView.swift */; };
 		10E0C528203DB11700E3CEDB /* DefaultKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E0C527203DB11700E3CEDB /* DefaultKeys.swift */; };
+		10E0C52A203DB49000E3CEDB /* DocTitleField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E0C529203DB49000E3CEDB /* DocTitleField.swift */; };
 		10F26940203C631900014679 /* UpdatedLbl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F2693F203C631900014679 /* UpdatedLbl.swift */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +81,7 @@
 		1061252D2027C0DD00F10338 /* DocumentListTV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentListTV.swift; sourceTree = "<group>"; };
 		10AF77D7203A80F3002A4B3C /* TagShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagShareView.swift; sourceTree = "<group>"; };
 		10E0C527203DB11700E3CEDB /* DefaultKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultKeys.swift; sourceTree = "<group>"; };
+		10E0C529203DB49000E3CEDB /* DocTitleField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocTitleField.swift; sourceTree = "<group>"; };
 		10F2693F203C631900014679 /* UpdatedLbl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatedLbl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -195,6 +197,7 @@
 				104FB3A5203791A9005FEE7D /* DocumentTextView.swift */,
 				10AF77D7203A80F3002A4B3C /* TagShareView.swift */,
 				10F2693F203C631900014679 /* UpdatedLbl.swift */,
+				10E0C529203DB49000E3CEDB /* DocTitleField.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -352,6 +355,7 @@
 				1061252E2027C0DD00F10338 /* DocumentListTV.swift in Sources */,
 				100608F920385EF300A06C94 /* Style.swift in Sources */,
 				104FB3A6203791A9005FEE7D /* DocumentTextView.swift in Sources */,
+				10E0C52A203DB49000E3CEDB /* DocTitleField.swift in Sources */,
 				104FB3A420378E22005FEE7D /* PreviewLabel.swift in Sources */,
 				104FB3A020378D81005FEE7D /* TagLabel.swift in Sources */,
 				106125212027BCD100F10338 /* Document+CoreDataClass.swift in Sources */,
