@@ -110,7 +110,7 @@
                         <barButtonItem title="Filter" id="lTI-wV-tha"/>
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="p4m-Xh-i8p">
-                        <barButtonItem key="backBarButtonItem" title="Cancel" id="Lmu-Se-ulb"/>
+                        <barButtonItem key="backBarButtonItem" title="Cancel" id="ted-03-J5t"/>
                         <barButtonItem key="leftBarButtonItem" title="Settings" id="NNE-3i-oQf"/>
                         <barButtonItem key="rightBarButtonItem" title="New +" id="8dm-jS-RTm">
                             <connections>
@@ -207,10 +207,10 @@
             </objects>
             <point key="canvasLocation" x="1160.8" y="33.733133433283363"/>
         </scene>
-        <!--Tag SelectVC-->
+        <!--Tags-->
         <scene sceneID="CLN-6I-hIG">
             <objects>
-                <viewController id="TxO-MZ-u4j" customClass="TagSelectVC" customModule="Breezy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Tags" id="TxO-MZ-u4j" customClass="TagSelectVC" customModule="Breezy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rxf-Bn-c9i">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

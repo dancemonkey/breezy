@@ -59,6 +59,7 @@ class DocumentVC: UIViewController, TouchDelegate {
   
   @objc func keyboardWillShow(notification: NSNotification) {
     if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+      print(navigationController?.toolbar.frame.height)
       tagViewBtmConstraint.constant += keyboardSize.height - (navigationController?.toolbar.frame.height)!
     }
   }

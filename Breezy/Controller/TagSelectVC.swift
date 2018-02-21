@@ -19,8 +19,15 @@ class TagSelectVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
   var frc: NSFetchedResultsController<Tag>!
   var context: NSManagedObjectContext!
   
+  // MARK: Initialization
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.done))
+    let backBtn = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: nil)
+    self.navigationItem.rightBarButtonItem = doneBtn
+    self.navigationItem.backBarButtonItem = backBtn
+    
     tableView.delegate = self
     tableView.dataSource = self
     frc = initializeFRC()
@@ -49,7 +56,9 @@ class TagSelectVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
     return fetchedResultsController
   }
   
-  @IBAction func done(sender: UIButton) {
+  
+  
+  @objc func done(sender: UIBarButtonItem) {
     // save tags to existing doc OR send chosen tags back to document screen for saving to new doc
   }
   
