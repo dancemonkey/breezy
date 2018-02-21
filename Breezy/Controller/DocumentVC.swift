@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class DocumentVC: UIViewController {
+class DocumentVC: UIViewController, TouchDelegate {
   
   @IBOutlet weak var textView: DocumentTextView!
   @IBOutlet weak var tagView: TagShareView!
@@ -19,6 +19,9 @@ class DocumentVC: UIViewController {
   
   var context: NSManagedObjectContext!
   var document: Document?
+  var tags: [Tag]?
+  
+  // MARK: Initializing
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
@@ -37,6 +40,7 @@ class DocumentVC: UIViewController {
     textView.text = doc.text
     titleFld.text = doc.title!
     tagView.configure(with: doc)
+    tagView.touchDelegate = self
   }
   
   override func viewDidLoad() {
@@ -51,6 +55,8 @@ class DocumentVC: UIViewController {
     NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: self.view.window)
   }
   
+  // MARK: Keyboard show/hide
+  
   @objc func keyboardWillShow(notification: NSNotification) {
     if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
       tagViewBtmConstraint.constant += keyboardSize.height - (navigationController?.toolbar.frame.height)!
@@ -62,6 +68,8 @@ class DocumentVC: UIViewController {
       tagViewBtmConstraint.constant -= keyboardSize.height + (navigationController?.toolbar.frame.height)!
     }
   }
+  
+  // MARK: Done
   
   @objc func done() {
     defer {
@@ -86,14 +94,27 @@ class DocumentVC: UIViewController {
     }
     doc.setText(to: textView.text, withTitle: titleFld.text!)
     doc.lastUpdated = Date() as NSDate
-    // TODO: also need to update tags if any new tags have been selected
-    // TODO: handle that after tag selection screen? flag 'tag selected' and handle here?
     do {
       try context.save()
     } catch {
       print("oops document saving didn't work!")
     }
-    
+  }
+  
+  // MARK: Touch Delegate
+  
+  func handleTouch() {
+    performSegue(withIdentifier: "showTagSelect", sender: self)
+  }
+  
+  // MARK: Segue
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == "showTagSelect" {
+      let destVC = segue.destination as! TagSelectVC
+      destVC.document = self.document
+      destVC.context = self.context
+    }
   }
   
 }

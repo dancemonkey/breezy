@@ -12,6 +12,8 @@ class TagShareView: UIView {
   
   @IBOutlet weak var tagLbl: TagLabel!
   
+  var touchDelegate: TouchDelegate?
+  
   override func awakeFromNib() {
     super.awakeFromNib()
     tagLbl.text = "Tap to add tags"
@@ -26,7 +28,7 @@ class TagShareView: UIView {
   }
   
   override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-    print("adding new tags")
+    touchDelegate?.handleTouch()
   }
   
 }

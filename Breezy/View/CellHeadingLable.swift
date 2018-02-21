@@ -12,7 +12,7 @@ class CellHeadingLable: UILabel {
   
   override func awakeFromNib() {
     super.awakeFromNib()
-    self.font = UIFont(name: "Avenir", size: 22)
+    self.font = UIFont(name: FontStyle.title.face, size: FontStyle.preview.size)
   }
   
 }
