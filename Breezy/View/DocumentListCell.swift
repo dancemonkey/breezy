@@ -11,6 +11,7 @@ import UIKit
 class DocumentListCell: UITableViewCell {
   
   @IBOutlet weak var previewLbl: UILabel!
+  @IBOutlet weak var titleLbl: UILabel!
   @IBOutlet weak var tagLbl: UILabel!
   @IBOutlet weak var updatedLbl: UILabel!
   
@@ -21,6 +22,7 @@ class DocumentListCell: UITableViewCell {
   
   func configure(with document: Document) {
     previewLbl.text = document.text
+    titleLbl.text = document.title!
     guard let tags = document.getTagText() else {
       tagLbl.isHidden = true
       return

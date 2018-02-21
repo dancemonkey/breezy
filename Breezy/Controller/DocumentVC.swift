@@ -30,11 +30,9 @@ class DocumentVC: UIViewController {
     guard let doc = document else {
       textView.text = ""
       textView.becomeFirstResponder()
-      self.title = "New Document"
       return
     }
     textView.text = doc.text
-    self.title = doc.title
     tagView.configure(with: doc)
   }
   

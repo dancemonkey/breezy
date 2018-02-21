@@ -30,9 +30,7 @@ class DocumentList: UIViewController, NSFetchedResultsControllerDelegate, UITabl
     // BELOW IS HACK TO FIX GRAYED-OUT UIBARBUTTONITEM BUG
     // https://forums.developer.apple.com/thread/75521
     newBtn.isEnabled = false
-    newBtn.isEnabled = true
-    
-    navigationController?.navigationBar.prefersLargeTitles = true
+    newBtn.isEnabled = true    
   }
   
   override func viewDidLoad() {
