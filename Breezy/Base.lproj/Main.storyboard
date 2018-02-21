@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Document List-->
+        <!--Notes-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="DocumentList" customModule="Breezy" customModuleProvider="target" sceneMemberID="viewController">
@@ -101,7 +101,7 @@
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="4zg-tP-n59"/>
                         <barButtonItem title="Filter" id="lTI-wV-tha"/>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" id="p4m-Xh-i8p">
+                    <navigationItem key="navigationItem" title="Notes" id="p4m-Xh-i8p">
                         <barButtonItem key="backBarButtonItem" title="Cancel" id="Lmu-Se-ulb"/>
                         <barButtonItem key="leftBarButtonItem" title="Settings" id="NNE-3i-oQf"/>
                         <barButtonItem key="rightBarButtonItem" title="New +" id="8dm-jS-RTm">

@@ -20,6 +20,7 @@ class DocumentList: UIViewController, NSFetchedResultsControllerDelegate, UITabl
   let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
   
   var frc: NSFetchedResultsController<Document>!
+  var defaults: UserDefaults!
   
   // MARK: App Start
   
@@ -39,7 +40,7 @@ class DocumentList: UIViewController, NSFetchedResultsControllerDelegate, UITabl
     tableView.dataSource = self
     tableView.delegate = self
     
-    frc = initializeFRC()
+    frc = initializeFRC(withSort: NSSortDescriptor(key: ListSortKeys.modified.value, ascending: false))
     frc.delegate = self
     do {
       try frc.performFetch()
@@ -47,11 +48,13 @@ class DocumentList: UIViewController, NSFetchedResultsControllerDelegate, UITabl
       print("no fetchie")
     }
     tableView.reloadData()
+    
+    defaults = UserDefaults.standard
   }
   
-  func initializeFRC() -> NSFetchedResultsController<Document> {
+  func initializeFRC(withSort sort: NSSortDescriptor) -> NSFetchedResultsController<Document> {
     let fetchRequest: NSFetchRequest<Document> = Document.fetchRequest()
-    fetchRequest.sortDescriptors = [NSSortDescriptor(key: "lastUpdated", ascending: false)]
+    fetchRequest.sortDescriptors = [sort]
     let fetchedResultsController: NSFetchedResultsController<Document> = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
     return fetchedResultsController
   }
