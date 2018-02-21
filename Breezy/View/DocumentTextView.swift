@@ -15,6 +15,7 @@ class DocumentTextView: UITextView {
     
     textColor = FontStyle.document.color
     font = UIFont(name: FontStyle.document.face, size: FontStyle.document.size)
+    self.backgroundColor = UIColor.lightGray
     
 //    layer.cornerRadius = 4.0
 //    layer.borderColor = UIColor.gray.cgColor
