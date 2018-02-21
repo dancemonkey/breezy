@@ -12,8 +12,12 @@ class DocTitleField: UITextField {
 
   override func awakeFromNib() {
     super.awakeFromNib()
-    self.font = UIFont(name: FontStyle.document.face, size: FontStyle.document.size)
-    self.textColor = FontStyle.document.color
+    self.font = UIFont(name: FontStyle.title.face, size: FontStyle.title.size)
+    self.textColor = FontStyle.title.color
+    
+    let padding = UIView(frame: CGRect(x: 0, y: 0, width: 6, height: 0))
+    self.leftView = padding
+    self.leftViewMode = .always
   }
 
 }

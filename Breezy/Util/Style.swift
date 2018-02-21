@@ -12,15 +12,16 @@ enum FontStyle {
   case tag
   case document
   case preview
+  case title
   
   var face: String {
     switch self {
     case .tag:
       return "Avenir-Oblique"
-    case .document:
+    case .document, .preview:
       return "Avenir"
-    case .preview:
-      return "Avenir"
+    case .title:
+      return "Avenir-Heavy"
     }
   }
   
@@ -32,6 +33,8 @@ enum FontStyle {
       return 18.0
     case .preview:
       return 15.0
+    case .title:
+      return 22.0
     }
   }
   
@@ -39,10 +42,10 @@ enum FontStyle {
     switch self {
     case .tag:
       return UIColor(red: 144/255, green: 19/255, blue: 254/255, alpha: 1.0)
-    case .document:
+    case .document, .preview:
       return .black
-    case .preview:
-      return .black
+    case .title:
+      return .darkGray
     }
   }
   

@@ -31,7 +31,7 @@ class DocumentVC: UIViewController {
     guard let doc = document else {
       textView.text = ""
       titleFld.text = ""
-      textView.becomeFirstResponder()
+      titleFld.becomeFirstResponder()
       return
     }
     textView.text = doc.text
