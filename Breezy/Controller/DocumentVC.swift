@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class DocumentVC: UIViewController, TouchDelegate {
+class DocumentVC: UIViewController, TouchDelegate, TagSelectDelegate {
   
   @IBOutlet weak var textView: DocumentTextView!
   @IBOutlet weak var tagView: TagShareView!
@@ -25,22 +25,11 @@ class DocumentVC: UIViewController, TouchDelegate {
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    
     defer {
       let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.done))
       self.navigationItem.rightBarButtonItem = doneBtn
       tagView.touchDelegate = self
     }
-    
-    guard let doc = document else {
-      textView.text = ""
-      titleFld.text = ""
-      titleFld.becomeFirstResponder()
-      return
-    }
-    textView.text = doc.text
-    titleFld.text = doc.title!
-    tagView.configure(with: doc)
   }
   
   override func viewDidLoad() {
@@ -52,14 +41,20 @@ class DocumentVC: UIViewController, TouchDelegate {
     textView.inputAccessoryView = dismissKeyboard
     titleFld.inputAccessoryView = dismissKeyboard
     
-//    NotificationCenter.default.addObserver(self, selector: #selector(DocumentVC.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-//    NotificationCenter.default.addObserver(self, selector: #selector(DocumentVC.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    guard let doc = document else {
+      textView.text = ""
+      titleFld.text = ""
+      titleFld.becomeFirstResponder()
+      return
+    }
+    textView.text = doc.text
+    titleFld.text = doc.title!
+    tagView.configure(with: Array(doc.tags!))
+    self.tags = Array(doc.tags!)
   }
   
   override func viewWillDisappear(_ animated: Bool) {
     super.viewWillDisappear(animated)
-//    NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: self.view.window)
-//    NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: self.view.window)
   }
   
   // MARK: Keyboard show/hide
@@ -71,19 +66,6 @@ class DocumentVC: UIViewController, TouchDelegate {
       titleFld.resignFirstResponder()
     }
   }
-//  @objc func keyboardWillShow(notification: NSNotification) {
-//    if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-//      tagViewBtmConstraint.constant += keyboardSize.height - 44
-//      //- (navigationController?.toolbar.frame.height)! THIS WAS CRASHING
-//    }
-//  }
-//
-//  @objc func keyboardWillHide(notification: NSNotification) {
-//    if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-//      tagViewBtmConstraint.constant -= keyboardSize.height + 44
-//      //+ (navigationController?.toolbar.frame.height)! THIS WAS CRASHING
-//    }
-//  }
   
   // MARK: Done
   
@@ -95,10 +77,7 @@ class DocumentVC: UIViewController, TouchDelegate {
     guard let doc = document else {
       let newDoc = Document(context: context)
       newDoc.setText(to: textView.text, withTitle: titleFld.text!)
-//      let tempTag = Tag(context: context)
-//      tempTag.name = "TempTag"
-//      newDoc.addToTags(tempTag)
-//      tempTag.addToDocuments(newDoc)
+      newDoc.tags = Set<Tag>(self.tags!)
       newDoc.creation = Date() as NSDate
       newDoc.lastUpdated = Date() as NSDate
       do {
@@ -109,6 +88,7 @@ class DocumentVC: UIViewController, TouchDelegate {
       return
     }
     doc.setText(to: textView.text, withTitle: titleFld.text!)
+    doc.tags = Set<Tag>(self.tags!)
     doc.lastUpdated = Date() as NSDate
     do {
       try context.save()
@@ -123,6 +103,13 @@ class DocumentVC: UIViewController, TouchDelegate {
     performSegue(withIdentifier: "showTagSelect", sender: self)
   }
   
+  // MARK: Tag Select Delegate
+  
+  func updateDocumentTags(with newTags: [Tag]?) {
+    self.tags = newTags
+    tagView.configure(with: self.tags)
+  }
+  
   // MARK: Segue
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -130,6 +117,7 @@ class DocumentVC: UIViewController, TouchDelegate {
       let destVC = segue.destination as! TagSelectVC
       destVC.document = self.document
       destVC.context = self.context
+      destVC.delegate = self
     }
   }
   

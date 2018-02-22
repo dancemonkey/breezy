@@ -30,7 +30,7 @@ public class Document: NSManagedObject {
     guard let docTags = self.tags, docTags.count > 0 else { return nil }
     tagText = ""
     for tag in tags! {
-      tagText! = tagText! + "\(String(describing: (tag as! Tag).name!)) "
+      tagText! = tagText! + "\(String(describing: (tag.name!))) "
     }
     return tagText
   }
@@ -38,7 +38,7 @@ public class Document: NSManagedObject {
   func clearTags() {
     guard let tags = self.tags else { return }
     for tag in tags {
-      (tag as! Tag).removeFromDocuments(self)
+      tag.removeFromDocuments(self)
     }
   }
   

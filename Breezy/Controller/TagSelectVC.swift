@@ -15,9 +15,11 @@ class TagSelectVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
   @IBOutlet weak var doneBtn: UIButton!
   
   var allTags = [Tag]()
+  var selectedTags = [Tag]()
   var document: Document?
   var frc: NSFetchedResultsController<Tag>!
   var context: NSManagedObjectContext!
+  var delegate: TagSelectDelegate?
   
   // MARK: Initialization
   override func viewDidLoad() {
@@ -56,10 +58,18 @@ class TagSelectVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
     return fetchedResultsController
   }
   
-  
-  
   @objc func done(sender: UIBarButtonItem) {
-    // save tags to existing doc OR send chosen tags back to document screen for saving to new doc
+    defer {
+      navigationController?.popViewController(animated: true)
+    }
+    guard let selected = tableView.indexPathsForSelectedRows else {
+      delegate?.updateDocumentTags(with: nil)
+      return
+    }
+    for selection in selected {
+      selectedTags.append(allTags[selection.row])
+    }
+    delegate?.updateDocumentTags(with: selectedTags)
   }
   
   // MARK: Tableview

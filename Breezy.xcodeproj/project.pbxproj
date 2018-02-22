@@ -31,6 +31,7 @@
 		10AF77D8203A80F3002A4B3C /* TagShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AF77D7203A80F3002A4B3C /* TagShareView.swift */; };
 		10CB647B203F030500D3E5D1 /* DismissKeyboard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10CB647A203F030500D3E5D1 /* DismissKeyboard.xib */; };
 		10CB647D203F056800D3E5D1 /* DismissKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CB647C203F056800D3E5D1 /* DismissKeyboardView.swift */; };
+		10CB647F203F0A1100D3E5D1 /* TagSelectDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CB647E203F0A1100D3E5D1 /* TagSelectDelegate.swift */; };
 		10CFCFC8203DBC1B004B65C4 /* TagSelectVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CFCFC7203DBC1B004B65C4 /* TagSelectVC.swift */; };
 		10CFCFCA203DBE2E004B65C4 /* TouchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CFCFC9203DBE2E004B65C4 /* TouchDelegate.swift */; };
 		10E0C528203DB11700E3CEDB /* DefaultKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E0C527203DB11700E3CEDB /* DefaultKeys.swift */; };
@@ -86,6 +87,7 @@
 		10AF77D7203A80F3002A4B3C /* TagShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagShareView.swift; sourceTree = "<group>"; };
 		10CB647A203F030500D3E5D1 /* DismissKeyboard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DismissKeyboard.xib; sourceTree = "<group>"; };
 		10CB647C203F056800D3E5D1 /* DismissKeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissKeyboardView.swift; sourceTree = "<group>"; };
+		10CB647E203F0A1100D3E5D1 /* TagSelectDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagSelectDelegate.swift; sourceTree = "<group>"; };
 		10CFCFC7203DBC1B004B65C4 /* TagSelectVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagSelectVC.swift; sourceTree = "<group>"; };
 		10CFCFC9203DBE2E004B65C4 /* TouchDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchDelegate.swift; sourceTree = "<group>"; };
 		10E0C527203DB11700E3CEDB /* DefaultKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultKeys.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				100608F820385EF300A06C94 /* Style.swift */,
 				10E0C527203DB11700E3CEDB /* DefaultKeys.swift */,
 				10CFCFC9203DBE2E004B65C4 /* TouchDelegate.swift */,
+				10CB647E203F0A1100D3E5D1 /* TagSelectDelegate.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -375,6 +378,7 @@
 				104FB3A420378E22005FEE7D /* PreviewLabel.swift in Sources */,
 				104FB3A020378D81005FEE7D /* TagLabel.swift in Sources */,
 				106125212027BCD100F10338 /* Document+CoreDataClass.swift in Sources */,
+				10CB647F203F0A1100D3E5D1 /* TagSelectDelegate.swift in Sources */,
 				1061252C2027BFA600F10338 /* DocumentView.swift in Sources */,
 				106125242027BCD100F10338 /* Tag+CoreDataProperties.swift in Sources */,
 				10E0C528203DB11700E3CEDB /* DefaultKeys.swift in Sources */,

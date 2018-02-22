@@ -23,13 +23,13 @@ class DocumentListCell: UITableViewCell {
   func configure(with document: Document) {
     previewLbl.text = document.text
     titleLbl.text = document.title!
+    updatedLbl.text = document.lastUpdatedPretty()
     guard let tags = document.getTagText() else {
       tagLbl.isHidden = true
       return
     }
     tagLbl.text = tags
     tagLbl.isHidden = false
-    updatedLbl.text = document.lastUpdatedPretty()
   }
   
 }

@@ -21,7 +21,8 @@ extension Document {
     @NSManaged public var text: String?
     @NSManaged public var title: String?
     @NSManaged public var lastUpdated: NSDate?
-    @NSManaged public var tags: NSSet?
+//    @NSManaged public var tags: NSSet?
+    @NSManaged public var tags: Set<Tag>?
 
 }
 

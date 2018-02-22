@@ -19,12 +19,15 @@ class TagShareView: UIView {
     tagLbl.text = "Tap to add tags"
   }
 
-  func configure(with document: Document) {
-    guard let tags = document.getTagText() else {
+  func configure(with tags: [Tag]?) {
+    guard let t = tags, t.count > 0 else {
       tagLbl.text = "Tap to add tags"
       return
     }
-    tagLbl.text = tags
+    tagLbl.text = ""
+    for tag in tags! {
+      tagLbl.text = tagLbl.text! + "\(tag.name!) "
+    }
   }
   
   override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
