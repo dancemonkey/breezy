@@ -88,7 +88,11 @@ class DocumentVC: UIViewController, TouchDelegate, TagSelectDelegate {
       return
     }
     doc.setText(to: textView.text, withTitle: titleFld.text!)
-    doc.tags = Set<Tag>(self.tags!)
+    if let tags = self.tags {
+      doc.tags = Set<Tag>(tags)
+    } else {
+      doc.tags = nil
+    }
     doc.lastUpdated = Date() as NSDate
     do {
       try context.save()
