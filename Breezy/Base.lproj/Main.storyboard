@@ -169,7 +169,7 @@
                                     <outlet property="tagLbl" destination="jNE-ju-9e0" id="nc5-Nb-qKX"/>
                                 </connections>
                             </view>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="DOCUMENT TITLE" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iFY-JE-qFF" customClass="DocTitleField" customModule="Breezy" customModuleProvider="target">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iFY-JE-qFF" customClass="DocTitleField" customModule="Breezy" customModuleProvider="target">
                                 <rect key="frame" x="8" y="68" width="359" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="gSl-t2-H7x"/>

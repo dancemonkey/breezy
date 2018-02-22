@@ -18,6 +18,8 @@ class DocTitleField: UITextField {
     let padding = UIView(frame: CGRect(x: 0, y: 0, width: 6, height: 0))
     self.leftView = padding
     self.leftViewMode = .always
+    
+    self.placeholder = "Title"
   }
 
 }

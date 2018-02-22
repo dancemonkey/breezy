@@ -15,11 +15,12 @@ class DocumentTextView: UITextView {
     
     textColor = FontStyle.document.color
     font = UIFont(name: FontStyle.document.face, size: FontStyle.document.size)
-    self.backgroundColor = UIColor.lightGray
     
-//    layer.cornerRadius = 4.0
-//    layer.borderColor = UIColor.gray.cgColor
-//    layer.borderWidth = 1.0
+    let borderFrame = CGRect(x: 0, y: 0, width: self.frame.width, height: 1)
+    let border = UIView(frame: borderFrame)
+    border.layer.backgroundColor = UIColor.lightGray.cgColor
+    self.addSubview(border)
+    
   }
 
 }
