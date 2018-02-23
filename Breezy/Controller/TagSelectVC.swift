@@ -77,10 +77,22 @@ class TagSelectVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
   }
   
   @IBAction func new(sender: UIBarButtonItem) {
-    // show new tag popup
+    let popup = UIAlertController(title: "Create Tag", message: "Enter tag name below.", preferredStyle: .alert)
+    popup.addAction(UIAlertAction(title: "DONE", style: .default, handler: { (action) in
+      let tagName = popup.textFields![0] as UITextField
+      guard let tag = tagName.text, tag != "" else { return }
+      let newTag = Tag(context: self.context)
+      newTag.name = tag
+      self.dismiss(animated: true, completion: nil)
+    }))
+    popup.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+    popup.addTextField { (field) in
+      field.placeholder = "TAG NAME"
+    }
+    self.present(popup, animated: true, completion: nil)
+    
     // enter tag name
     // press done, callback here to add tag?
-    print("adding new tag")
   }
   
   // MARK: Tableview
@@ -102,7 +114,6 @@ class TagSelectVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
   
   func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
     if editingStyle == .delete {
-//      tableView.deleteRows(at: [indexPath], with: .fade)
       let tag = frc.object(at: indexPath)
       tag.prepareForDeletion()
       context.delete(tag)
