@@ -16,8 +16,11 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XxP-20-X3u">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
-                    <state key="normal" title="Dismiss Keyboard"/>
+                    <rect key="frame" x="314" y="0.0" width="45" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="45" id="4dt-ch-pCA"/>
+                    </constraints>
+                    <state key="normal" title="Done"/>
                     <connections>
                         <action selector="dismissWithSender:" destination="iN0-l3-epB" eventType="touchUpInside" id="4mK-hH-4ME"/>
                     </connections>
@@ -25,10 +28,9 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="XxP-20-X3u" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="1cS-mz-h5W"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="XxP-20-X3u" secondAttribute="bottom" id="QwE-jG-2L4"/>
-                <constraint firstItem="XxP-20-X3u" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="s4F-ks-P9v"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="XxP-20-X3u" secondAttribute="trailing" id="udl-7N-6Nv"/>
+                <constraint firstItem="XxP-20-X3u" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="YzB-bb-bWO"/>
+                <constraint firstItem="XxP-20-X3u" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="bn5-F9-xBT"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="XxP-20-X3u" secondAttribute="trailing" constant="16" id="jcG-P9-56n"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>

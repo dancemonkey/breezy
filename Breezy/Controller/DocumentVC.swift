@@ -19,7 +19,7 @@ class DocumentVC: UIViewController, TouchDelegate, TagSelectDelegate {
   
   var context: NSManagedObjectContext!
   var document: Document?
-  var tags: [Tag]?
+  var tags: [Tag]? = nil
   
   // MARK: Initializing
   
@@ -77,7 +77,11 @@ class DocumentVC: UIViewController, TouchDelegate, TagSelectDelegate {
     guard let doc = document else {
       let newDoc = Document(context: context)
       newDoc.setText(to: textView.text, withTitle: titleFld.text!)
-      newDoc.tags = Set<Tag>(self.tags!)
+      if let tags = self.tags {
+        newDoc.tags = Set<Tag>(tags)
+      } else {
+        newDoc.tags = nil
+      }
       newDoc.creation = Date() as NSDate
       newDoc.lastUpdated = Date() as NSDate
       do {

@@ -12,5 +12,11 @@ import CoreData
 
 @objc(Tag)
 public class Tag: NSManagedObject {
-  
+  public override func prepareForDeletion() {
+    super.prepareForDeletion()
+    guard let docs = self.documents else { return }
+    for doc in docs {
+      (doc as? Document)?.removeFromTags(self)
+    }
+  }
 }

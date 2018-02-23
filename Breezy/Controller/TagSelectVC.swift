@@ -9,10 +9,10 @@
 import UIKit
 import CoreData
 
-class TagSelectVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class TagSelectVC: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate {
   
   @IBOutlet weak var tableView: UITableView!
-  @IBOutlet weak var doneBtn: UIButton!
+  @IBOutlet weak var newBtn: UIBarButtonItem!
   
   var allTags = [Tag]()
   var selectedTags = [Tag]()
@@ -32,7 +32,9 @@ class TagSelectVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
     
     tableView.delegate = self
     tableView.dataSource = self
+    
     frc = initializeFRC()
+    frc.delegate = self
     do {
       try frc.performFetch()
     } catch {
@@ -58,6 +60,8 @@ class TagSelectVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
     return fetchedResultsController
   }
   
+  // MARK: Interface Buttons
+  
   @objc func done(sender: UIBarButtonItem) {
     defer {
       navigationController?.popViewController(animated: true)
@@ -67,9 +71,16 @@ class TagSelectVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
       return
     }
     for selection in selected {
-      selectedTags.append(allTags[selection.row])
+      selectedTags.append(frc.fetchedObjects![selection.row])
     }
     delegate?.updateDocumentTags(with: selectedTags)
+  }
+  
+  @IBAction func new(sender: UIBarButtonItem) {
+    // show new tag popup
+    // enter tag name
+    // press done, callback here to add tag?
+    print("adding new tag")
   }
   
   // MARK: Tableview
@@ -79,13 +90,58 @@ class TagSelectVC: UIViewController, UITableViewDataSource, UITableViewDelegate 
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return allTags.count
+    guard let tags = frc.fetchedObjects else { return 0 }
+    return tags.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "tagCell")
-    cell?.textLabel?.text = allTags[indexPath.row].name!
+    cell?.textLabel?.text = frc.fetchedObjects![indexPath.row].name!
     return cell!
+  }
+  
+  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    if editingStyle == .delete {
+//      tableView.deleteRows(at: [indexPath], with: .fade)
+      let tag = frc.object(at: indexPath)
+      tag.prepareForDeletion()
+      context.delete(tag)
+      do {
+        try context.save()
+      } catch {
+        print("did not save after deleting tag")
+      }
+    }
+  }
+  
+  // MARK: NS FRC methods
+  
+  func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+    tableView.beginUpdates()
+  }
+  
+  func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+    tableView.endUpdates()
+  }
+  
+  func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+    switch type {
+    case .update:
+      tableView.reloadRows(at: [indexPath!], with: .fade)
+    case .insert:
+      if let indexPath = newIndexPath {
+        tableView.insertRows(at: [indexPath], with: .fade)
+      }
+    case .delete:
+      if let indexPath = indexPath {
+        tableView.deleteRows(at: [indexPath], with: .fade)
+      }
+    case .move:
+      if let indexPath = indexPath, let newIndexPath = newIndexPath {
+        tableView.deleteRows(at: [indexPath], with: .fade)
+        tableView.insertRows(at: [newIndexPath], with: .fade)
+      }
+    }
   }
   
 }

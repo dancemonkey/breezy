@@ -252,9 +252,17 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="RhP-OR-gQQ"/>
                     </view>
-                    <toolbarItems/>
+                    <toolbarItems>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="kJT-xk-VNW"/>
+                        <barButtonItem systemItem="add" id="Tx2-84-iuk">
+                            <connections>
+                                <action selector="newWithSender:" destination="TxO-MZ-u4j" id="evN-NN-lMS"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="newBtn" destination="Tx2-84-iuk" id="T3R-px-Id3"/>
                         <outlet property="tableView" destination="USO-zv-Mtt" id="oVb-hn-s5j"/>
                     </connections>
                 </viewController>
