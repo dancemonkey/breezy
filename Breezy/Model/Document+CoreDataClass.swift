@@ -13,6 +13,13 @@ import CoreData
 @objc(Document)
 public class Document: NSManagedObject {
   
+  public override func prepareForDeletion() {
+    guard let tags = self.tags else { return }
+    for tag in tags {
+      tag.removeFromDocuments(self)
+    }
+  }
+  
   var editing: Bool = false
   
   func setText(to text: String, withTitle title: String) {
@@ -35,13 +42,6 @@ public class Document: NSManagedObject {
     return tagText
   }
   
-  func clearTags() {
-    guard let tags = self.tags else { return }
-    for tag in tags {
-      tag.removeFromDocuments(self)
-    }
-  }
-  
   func lastUpdatedPretty() -> String {
     let formatter = DateFormatter()
     formatter.dateFormat = "MMM d, h:mm a"
@@ -51,7 +51,5 @@ public class Document: NSManagedObject {
   private func setTitle(to: String) {
     self.title = to
   }
-  
-  // TODO: func to return friendly date string for tableCells
   
 }

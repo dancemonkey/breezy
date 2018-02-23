@@ -78,7 +78,10 @@ class DocumentVC: UIViewController, TouchDelegate, TagSelectDelegate {
       let newDoc = Document(context: context)
       newDoc.setText(to: textView.text, withTitle: titleFld.text!)
       if let tags = self.tags {
-        newDoc.tags = Set<Tag>(tags)
+        for tag in tags {
+          newDoc.addToTags(tag)
+          tag.addToDocuments(newDoc)
+        }
       } else {
         newDoc.tags = nil
       }
@@ -93,7 +96,10 @@ class DocumentVC: UIViewController, TouchDelegate, TagSelectDelegate {
     }
     doc.setText(to: textView.text, withTitle: titleFld.text!)
     if let tags = self.tags {
-      doc.tags = Set<Tag>(tags)
+      for tag in tags {
+        doc.addToTags(tag)
+        tag.addToDocuments(doc)
+      }
     } else {
       doc.tags = nil
     }
