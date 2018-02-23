@@ -14,9 +14,9 @@ class TagSelectVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var newBtn: UIBarButtonItem!
   
-  var allTags = [Tag]()
+  var tags: [Tag]? = nil
   var selectedTags = [Tag]()
-  var document: Document?
+//  var document: Document?
   var frc: NSFetchedResultsController<Tag>!
   var context: NSManagedObjectContext!
   var delegate: TagSelectDelegate?
@@ -40,17 +40,7 @@ class TagSelectVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
     } catch {
       print("no tag fetch :(")
     }
-    setupTags()
-  }
-  
-  func setupTags() {
-    guard let tags = frc.fetchedObjects else {
-      return
-    }
-    
-    for tag in tags {
-      allTags.append(tag)
-    }
+    selectDocTags()
   }
   
   func initializeFRC() -> NSFetchedResultsController<Tag> {
@@ -58,6 +48,15 @@ class TagSelectVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
     fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
     let fetchedResultsController: NSFetchedResultsController<Tag> = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
     return fetchedResultsController
+  }
+  
+  func selectDocTags() {
+    guard let tags = self.tags, let fetched = frc.fetchedObjects else { return }
+    for tag in tags {
+      if fetched.contains(tag) {
+        tableView.selectRow(at: frc.indexPath(forObject: tag), animated: true, scrollPosition: .middle)
+      }
+    }
   }
   
   // MARK: Interface Buttons
@@ -90,9 +89,6 @@ class TagSelectVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
       field.placeholder = "TAG NAME"
     }
     self.present(popup, animated: true, completion: nil)
-    
-    // enter tag name
-    // press done, callback here to add tag?
   }
   
   // MARK: Tableview

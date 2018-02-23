@@ -123,7 +123,8 @@ class DocumentVC: UIViewController, TouchDelegate, TagSelectDelegate {
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == "showTagSelect" {
       let destVC = segue.destination as! TagSelectVC
-      destVC.document = self.document
+//      destVC.document = self.document
+      destVC.tags = self.tags
       destVC.context = self.context
       destVC.delegate = self
     }
