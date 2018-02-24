@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XPE-RY-6bw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14092" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XPE-RY-6bw">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14081.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="Avenir.ttc">
-            <string>Avenir-Book</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--Document List-->
         <scene sceneID="tne-QT-ifu">
@@ -23,11 +18,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ReL-eg-QWV" customClass="DocumentListTV" customModule="Breezy" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="68" width="375" height="555"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="559"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <searchBar key="tableHeaderView" contentMode="redraw" id="AEl-Av-3NI">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </searchBar>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="documentCell" rowHeight="90" id="33t-xf-s9S" customClass="DocumentListCell" customModule="Breezy" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="90"/>
+                                        <rect key="frame" x="0.0" y="72" width="375" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="33t-xf-s9S" id="7od-Pq-Et6">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
@@ -103,7 +103,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ReL-eg-QWV" secondAttribute="bottom" id="HuY-Ur-Ss3"/>
-                            <constraint firstItem="ReL-eg-QWV" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="4" id="SMs-vf-Nfj"/>
+                            <constraint firstItem="ReL-eg-QWV" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="SMs-vf-Nfj"/>
                             <constraint firstItem="ReL-eg-QWV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="cWD-WF-DkL"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ReL-eg-QWV" secondAttribute="trailing" id="nXg-NE-nVT"/>
                         </constraints>
@@ -126,6 +126,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="newBtn" destination="8dm-jS-RTm" id="pOn-0M-La4"/>
+                        <outlet property="searchBar" destination="AEl-Av-3NI" id="cgG-HP-O55"/>
                         <outlet property="tableView" destination="ReL-eg-QWV" id="YDw-eW-npU"/>
                         <segue destination="kVd-MO-iwt" kind="show" identifier="showDocument" id="aDm-Zf-KuB"/>
                     </connections>
@@ -143,16 +144,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Jif-sq-7XC" customClass="DocumentTextView" customModule="Breezy" customModuleProvider="target">
-                                <rect key="frame" x="8" y="121" width="359" height="454"/>
+                                <rect key="frame" x="8" y="121" width="359" height="444"/>
                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" spellCheckingType="yes"/>
                             </textView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iQu-hl-VZJ" customClass="TagShareView" customModule="Breezy" customModuleProvider="target">
-                                <rect key="frame" x="8" y="583" width="359" height="40"/>
+                                <rect key="frame" x="8" y="573" width="359" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tag Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jNE-ju-9e0" customClass="TagLabel" customModule="Breezy" customModuleProvider="target">
-                                        <rect key="frame" x="4" y="10" width="351" height="20.5"/>
+                                        <rect key="frame" x="4" y="15" width="351" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>

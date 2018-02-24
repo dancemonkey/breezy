@@ -9,13 +9,14 @@
 import UIKit
 import CoreData
 
-class DocumentList: UIViewController, NSFetchedResultsControllerDelegate, UITableViewDataSource, UITableViewDelegate {
+class DocumentList: UIViewController, NSFetchedResultsControllerDelegate, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
   
   // TODO: call new document command on every launch
   
   // MARK: Properties
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var newBtn: UIBarButtonItem!
+  @IBOutlet weak var searchBar: UISearchBar!
   
   let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
   
