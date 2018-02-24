@@ -38,6 +38,8 @@ class DocumentList: UIViewController, NSFetchedResultsControllerDelegate, UITabl
     super.viewDidLoad()
     tableView.dataSource = self
     tableView.delegate = self
+    searchBar.delegate = self
+    searchBar.showsCancelButton = true
     
     frc = initializeFRC(withSort: NSSortDescriptor(key: ListSortKeys.modified.value, ascending: false))
     frc.delegate = self
@@ -47,7 +49,7 @@ class DocumentList: UIViewController, NSFetchedResultsControllerDelegate, UITabl
       print("no fetchie")
     }
     tableView.reloadData()
-    
+
     defaults = UserDefaults.standard
   }
   
@@ -147,6 +149,46 @@ class DocumentList: UIViewController, NSFetchedResultsControllerDelegate, UITabl
         tableView.insertRows(at: [newIndexPath], with: .fade)
       }
     }
+  }
+  
+  // MARK: Search bar delegate
+  
+  func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    var predicate: NSPredicate? = nil
+    if let text = searchBar.text, text.count > 0 {
+      predicate = NSPredicate(format: "(title contains %@) || (text contains %@)", text, text)
+      frc.fetchRequest.predicate = predicate
+      do {
+        try frc.performFetch()
+      } catch {
+        print("predicated fetch not successful")
+      }
+      tableView.reloadData()
+    }
+  }
+  
+  func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+    searchBar.resignFirstResponder()
+    searchBar.text = ""
+    frc.fetchRequest.predicate = nil
+    do {
+      try frc.performFetch()
+    } catch {
+      print("predicated fetch not successful")
+    }
+    tableView.reloadData()
+  }
+  
+  func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    searchBar.resignFirstResponder()
+    searchBar.text = ""
+    frc.fetchRequest.predicate = nil
+    do {
+      try frc.performFetch()
+    } catch {
+      print("predicated fetch not successful")
+    }
+    tableView.reloadData()
   }
   
   // MARK: Segue
