@@ -161,8 +161,8 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="jNE-ju-9e0" secondAttribute="trailing" constant="4" id="DID-L4-fZd"/>
+                                    <constraint firstItem="jNE-ju-9e0" firstAttribute="leading" secondItem="iQu-hl-VZJ" secondAttribute="leading" constant="4" id="Tzx-St-jUe"/>
                                     <constraint firstItem="jNE-ju-9e0" firstAttribute="centerY" secondItem="iQu-hl-VZJ" secondAttribute="centerY" id="hxb-Dd-3Ox"/>
-                                    <constraint firstItem="jNE-ju-9e0" firstAttribute="leading" secondItem="iQu-hl-VZJ" secondAttribute="leading" constant="4" id="ojV-aE-4M7"/>
                                     <constraint firstAttribute="height" constant="40" id="wnY-D8-YZj"/>
                                 </constraints>
                                 <connections>
@@ -195,7 +195,11 @@
                         <viewLayoutGuide key="safeArea" id="58d-64-PMs"/>
                     </view>
                     <toolbarItems>
-                        <barButtonItem systemItem="action" id="tgD-AO-cqX"/>
+                        <barButtonItem systemItem="action" id="tgD-AO-cqX">
+                            <connections>
+                                <action selector="shareWithSender:" destination="kVd-MO-iwt" id="Ns9-7e-b5F"/>
+                            </connections>
+                        </barButtonItem>
                     </toolbarItems>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>

@@ -90,16 +90,41 @@ class DocumentList: UIViewController, NSFetchedResultsControllerDelegate, UITabl
   }
   
   func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-    if editingStyle == .delete {
-      let doc = frc.object(at: indexPath)
+//    if editingStyle == .delete {
+//      let doc = frc.object(at: indexPath)
+//      doc.prepareForDeletion()
+//      context.delete(doc)
+//      do {
+//        try context.save()
+//      } catch {
+//        print("failure to delete")
+//      }
+//    }
+  }
+  
+  func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+    let share = UITableViewRowAction(style: .normal, title: "Share") { (action, index) in
+      var shareItems = [Any]()
+      if let title = self.frc.object(at: index).title {
+        shareItems.append(title)
+      }
+      if let text = self.frc.object(at: index).text {
+        shareItems.append(text)
+      }
+      let vc = UIActivityViewController(activityItems: shareItems, applicationActivities: nil)
+      self.present(vc, animated: true, completion: nil)
+    }
+    let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, index) in
+      let doc = self.frc.object(at: indexPath)
       doc.prepareForDeletion()
-      context.delete(doc)
+      self.context.delete(doc)
       do {
-        try context.save()
+        try self.context.save()
       } catch {
         print("failure to delete")
       }
     }
+    return [share, delete]
   }
   
   // MARK: NS FRC Methods

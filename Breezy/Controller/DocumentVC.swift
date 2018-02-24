@@ -111,6 +111,14 @@ class DocumentVC: UIViewController, TouchDelegate, TagSelectDelegate {
     }
   }
   
+  // MARK: Share
+  @IBAction func share(sender: UIBarButtonItem) {
+    if let text = textView.text, text != "" {
+      let vc = UIActivityViewController(activityItems: [text], applicationActivities: nil)
+      present(vc, animated: true, completion: nil)
+    }
+  }
+  
   // MARK: Touch Delegate
   
   func handleTouch() {
@@ -129,7 +137,6 @@ class DocumentVC: UIViewController, TouchDelegate, TagSelectDelegate {
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == "showTagSelect" {
       let destVC = segue.destination as! TagSelectVC
-//      destVC.document = self.document
       destVC.tags = self.tags
       destVC.context = self.context
       destVC.delegate = self
