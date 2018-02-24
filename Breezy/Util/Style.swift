@@ -28,7 +28,7 @@ enum FontStyle {
   var size: CGFloat {
     switch self {
     case .tag:
-      return 12.0
+      return 14.0
     case .document:
       return 18.0
     case .preview:

@@ -90,16 +90,7 @@ class DocumentList: UIViewController, NSFetchedResultsControllerDelegate, UITabl
   }
   
   func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-//    if editingStyle == .delete {
-//      let doc = frc.object(at: indexPath)
-//      doc.prepareForDeletion()
-//      context.delete(doc)
-//      do {
-//        try context.save()
-//      } catch {
-//        print("failure to delete")
-//      }
-//    }
+
   }
   
   func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {

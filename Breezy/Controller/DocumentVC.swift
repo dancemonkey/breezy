@@ -51,6 +51,7 @@ class DocumentVC: UIViewController, TouchDelegate, TagSelectDelegate {
     titleFld.text = doc.title!
     tagView.configure(with: Array(doc.tags!))
     self.tags = Array(doc.tags!)
+    
   }
   
   override func viewWillDisappear(_ animated: Bool) {
@@ -113,10 +114,15 @@ class DocumentVC: UIViewController, TouchDelegate, TagSelectDelegate {
   
   // MARK: Share
   @IBAction func share(sender: UIBarButtonItem) {
-    if let text = textView.text, text != "" {
-      let vc = UIActivityViewController(activityItems: [text], applicationActivities: nil)
-      present(vc, animated: true, completion: nil)
+    var shareItems = [Any]()
+    if let title = titleFld.text {
+      shareItems.append(title)
     }
+    if let text = textView.text {
+      shareItems.append(text)
+    }
+    let vc = UIActivityViewController(activityItems: shareItems, applicationActivities: nil)
+    present(vc, animated: true, completion: nil)
   }
   
   // MARK: Touch Delegate
