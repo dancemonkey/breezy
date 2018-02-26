@@ -21,7 +21,6 @@ class DocumentList: UIViewController, NSFetchedResultsControllerDelegate, UITabl
   let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
   
   var frc: NSFetchedResultsController<Document>!
-  var defaults: UserDefaults!
   
   // MARK: App Start
   
@@ -41,7 +40,11 @@ class DocumentList: UIViewController, NSFetchedResultsControllerDelegate, UITabl
     searchBar.delegate = self
     searchBar.showsCancelButton = true
     
-    frc = initializeFRC(withSort: NSSortDescriptor(key: ListSortKeys.modified.value, ascending: false))
+    var ascending = false
+    if getDefaultSort() == .title {
+      ascending = true
+    }
+    frc = initializeFRC(withSort: NSSortDescriptor(key: getDefaultSort().rawValue, ascending: ascending))
     frc.delegate = self
     do {
       try frc.performFetch()
@@ -49,8 +52,19 @@ class DocumentList: UIViewController, NSFetchedResultsControllerDelegate, UITabl
       print("no fetchie")
     }
     tableView.reloadData()
-
-    defaults = UserDefaults.standard
+  }
+  
+  func getDefaultSort() -> ListSort {
+    guard let sortMethod = UserDefaults().value(forKey: DefaultKeys.sortMethod.rawValue) else {
+      print("stopping in reading defaults")
+      return .lastUpdated
+    }
+    guard let method = ListSort(rawValue: sortMethod as! String) else {
+      print("stopping in creating listSort from value")
+      print(sortMethod)
+      return .lastUpdated
+    }
+    return method
   }
   
   func initializeFRC(withSort sort: NSSortDescriptor) -> NSFetchedResultsController<Document> {
@@ -58,6 +72,42 @@ class DocumentList: UIViewController, NSFetchedResultsControllerDelegate, UITabl
     fetchRequest.sortDescriptors = [sort]
     let fetchedResultsController: NSFetchedResultsController<Document> = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
     return fetchedResultsController
+  }
+  
+  // MARK: Filter and Sort
+  @IBAction func sort(sender: UIBarButtonItem) {
+    let alert = UIAlertController(title: "Sort by", message: nil, preferredStyle: .actionSheet)
+    let created = UIAlertAction(title: "Created", style: .default) { (action) in
+      self.sort(by: .creation)
+    }
+    let modified = UIAlertAction(title: "Modified", style: .default) { (action) in
+      self.sort(by: .lastUpdated)
+    }
+    let name = UIAlertAction(title: "Name", style: .default) { (action) in
+      self.sort(by: .title)
+    }
+    alert.addAction(modified)
+    alert.addAction(created)
+    alert.addAction(name)
+    self.present(alert, animated: true, completion: nil)
+  }
+  
+  private func sort(by method: ListSort) {
+    frc.delegate = nil
+    var ascending = false
+    if method == .title {
+      ascending = true
+    }
+    self.frc = initializeFRC(withSort: NSSortDescriptor(key: method.rawValue, ascending: ascending))
+    frc.delegate = self
+    do {
+      try frc.performFetch()
+      tableView.reloadData()
+    } catch {
+      print("failed fetch after setting new sort method")
+    }
+    UserDefaults().set(method.rawValue, forKey: DefaultKeys.sortMethod.rawValue)
+    print(UserDefaults().value(forKey: DefaultKeys.sortMethod.rawValue))
   }
   
   // MARK: Document Methods

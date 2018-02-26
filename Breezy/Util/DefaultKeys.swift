@@ -8,19 +8,12 @@
 
 import Foundation
 
-enum ListSortKeys {
-  case created
-  case modified
+enum ListSort: String {
+  case creation
+  case lastUpdated
   case title
-  
-  var value: String {
-    switch self {
-    case .created:
-      return "creation"
-    case .modified:
-      return "lastUpdated"
-    case .title:
-      return "title"
-    }
-  }
+}
+
+enum DefaultKeys: String {
+  case sortMethod
 }
