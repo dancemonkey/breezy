@@ -56,12 +56,9 @@ class DocumentList: UIViewController, NSFetchedResultsControllerDelegate, UITabl
   
   func getDefaultSort() -> ListSort {
     guard let sortMethod = UserDefaults().value(forKey: DefaultKeys.sortMethod.rawValue) else {
-      print("stopping in reading defaults")
       return .lastUpdated
     }
     guard let method = ListSort(rawValue: sortMethod as! String) else {
-      print("stopping in creating listSort from value")
-      print(sortMethod)
       return .lastUpdated
     }
     return method
@@ -107,7 +104,6 @@ class DocumentList: UIViewController, NSFetchedResultsControllerDelegate, UITabl
       print("failed fetch after setting new sort method")
     }
     UserDefaults().set(method.rawValue, forKey: DefaultKeys.sortMethod.rawValue)
-    print(UserDefaults().value(forKey: DefaultKeys.sortMethod.rawValue))
   }
   
   @IBAction func filter(sender: UIBarButtonItem) {
