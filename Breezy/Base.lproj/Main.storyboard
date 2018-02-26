@@ -121,7 +121,11 @@
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="4zg-tP-n59"/>
-                        <barButtonItem title="Filter" id="lTI-wV-tha"/>
+                        <barButtonItem title="Filter" id="lTI-wV-tha">
+                            <connections>
+                                <action selector="filterWithSender:" destination="BYZ-38-t0r" id="dYt-bk-JhP"/>
+                            </connections>
+                        </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="p4m-Xh-i8p">
                         <barButtonItem key="backBarButtonItem" title="Cancel" id="ted-03-J5t"/>
@@ -159,19 +163,19 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" spellCheckingType="yes"/>
                             </textView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iQu-hl-VZJ" customClass="TagShareView" customModule="Breezy" customModuleProvider="target">
-                                <rect key="frame" x="8" y="573" width="359" height="50"/>
+                                <rect key="frame" x="0.0" y="573" width="375" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tag Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jNE-ju-9e0" customClass="TagLabel" customModule="Breezy" customModuleProvider="target">
-                                        <rect key="frame" x="4" y="15" width="351" height="20.5"/>
+                                        <rect key="frame" x="8" y="15" width="359" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="0.069751051223241586" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="jNE-ju-9e0" secondAttribute="trailing" constant="4" id="DID-L4-fZd"/>
-                                    <constraint firstItem="jNE-ju-9e0" firstAttribute="leading" secondItem="iQu-hl-VZJ" secondAttribute="leading" constant="4" id="Tzx-St-jUe"/>
+                                    <constraint firstAttribute="trailing" secondItem="jNE-ju-9e0" secondAttribute="trailing" constant="8" id="DID-L4-fZd"/>
+                                    <constraint firstItem="jNE-ju-9e0" firstAttribute="leading" secondItem="iQu-hl-VZJ" secondAttribute="leading" constant="8" id="Tzx-St-jUe"/>
                                     <constraint firstItem="jNE-ju-9e0" firstAttribute="centerY" secondItem="iQu-hl-VZJ" secondAttribute="centerY" id="hxb-Dd-3Ox"/>
                                     <constraint firstAttribute="height" constant="50" id="wnY-D8-YZj"/>
                                 </constraints>
@@ -193,9 +197,9 @@
                         <constraints>
                             <constraint firstItem="58d-64-PMs" firstAttribute="trailing" secondItem="Jif-sq-7XC" secondAttribute="trailing" constant="8" id="BpQ-mU-86j"/>
                             <constraint firstItem="58d-64-PMs" firstAttribute="trailing" secondItem="iFY-JE-qFF" secondAttribute="trailing" constant="8" id="E90-0L-ufs"/>
-                            <constraint firstItem="iQu-hl-VZJ" firstAttribute="leading" secondItem="58d-64-PMs" secondAttribute="leading" constant="8" id="JUb-QC-oqt"/>
+                            <constraint firstItem="iQu-hl-VZJ" firstAttribute="leading" secondItem="58d-64-PMs" secondAttribute="leading" id="JUb-QC-oqt"/>
                             <constraint firstItem="iQu-hl-VZJ" firstAttribute="top" secondItem="Jif-sq-7XC" secondAttribute="bottom" constant="8" id="Jlf-xC-ZIK"/>
-                            <constraint firstItem="58d-64-PMs" firstAttribute="trailing" secondItem="iQu-hl-VZJ" secondAttribute="trailing" constant="8" id="SL8-VY-SvF"/>
+                            <constraint firstItem="58d-64-PMs" firstAttribute="trailing" secondItem="iQu-hl-VZJ" secondAttribute="trailing" id="SL8-VY-SvF"/>
                             <constraint firstItem="58d-64-PMs" firstAttribute="bottom" secondItem="iQu-hl-VZJ" secondAttribute="bottom" id="Tl8-5D-cmd"/>
                             <constraint firstItem="Jif-sq-7XC" firstAttribute="leading" secondItem="58d-64-PMs" secondAttribute="leading" constant="8" id="WKO-zl-2xe"/>
                             <constraint firstItem="iFY-JE-qFF" firstAttribute="top" secondItem="58d-64-PMs" secondAttribute="top" constant="4" id="gWK-d4-65x"/>

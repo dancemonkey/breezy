@@ -110,6 +110,12 @@ class DocumentList: UIViewController, NSFetchedResultsControllerDelegate, UITabl
     print(UserDefaults().value(forKey: DefaultKeys.sortMethod.rawValue))
   }
   
+  @IBAction func filter(sender: UIBarButtonItem) {
+    // show tag select screen
+    // filter by selected tags
+    // refresh/reload FRC and tableView
+  }
+  
   // MARK: Document Methods
   @IBAction func newDocument() {
     performSegue(withIdentifier: "showDocument", sender: nil)
