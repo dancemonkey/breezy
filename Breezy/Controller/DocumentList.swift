@@ -11,15 +11,12 @@ import CoreData
 
 class DocumentList: UIViewController, NSFetchedResultsControllerDelegate, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
   
-  // TODO: call new document command on every launch
-  
   // MARK: Properties
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var newBtn: UIBarButtonItem!
   @IBOutlet weak var searchBar: UISearchBar!
   
   let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-  
   var frc: NSFetchedResultsController<Document>!
   
   // MARK: App Start
@@ -27,7 +24,7 @@ class DocumentList: UIViewController, NSFetchedResultsControllerDelegate, UITabl
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     
-    // BELOW IS HACK TO FIX GRAYED-OUT UIBARBUTTONITEM BUG
+    // HACK TO FIX GRAYED-OUT UIBARBUTTONITEM BUG
     // https://forums.developer.apple.com/thread/75521
     newBtn.isEnabled = false
     newBtn.isEnabled = true    
@@ -107,6 +104,7 @@ class DocumentList: UIViewController, NSFetchedResultsControllerDelegate, UITabl
   }
   
   @IBAction func filter(sender: UIBarButtonItem) {
+    performSegue(withIdentifier: "selectTagFilter", sender: nil)
     // show tag select screen
     // filter by selected tags
     // refresh/reload FRC and tableView
@@ -253,6 +251,9 @@ class DocumentList: UIViewController, NSFetchedResultsControllerDelegate, UITabl
         destination.document = nil
       }
       destination.context = self.context
+    } else if segue.identifier == "selectTagFilter" {
+      let destinaton = segue.destination as! TagSelectVC
+      destinaton.context = self.context
     }
   }
   

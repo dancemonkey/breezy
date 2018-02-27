@@ -142,11 +142,12 @@
                         <outlet property="searchBar" destination="AEl-Av-3NI" id="KcL-JF-KgS"/>
                         <outlet property="tableView" destination="ReL-eg-QWV" id="YDw-eW-npU"/>
                         <segue destination="kVd-MO-iwt" kind="show" identifier="showDocument" id="aDm-Zf-KuB"/>
+                        <segue destination="TxO-MZ-u4j" kind="show" identifier="selectTagFilter" id="kyn-iy-mGN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="372" y="33.733133433283363"/>
+            <point key="canvasLocation" x="367" y="-256"/>
         </scene>
         <!--DocumentVC-->
         <scene sceneID="Ypx-uR-tEd">
@@ -316,4 +317,7 @@
             <point key="canvasLocation" x="-324" y="34"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="kyn-iy-mGN"/>
+    </inferredMetricsTieBreakers>
 </document>

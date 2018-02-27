@@ -16,7 +16,6 @@ class TagSelectVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
   
   var tags: [Tag]? = nil
   var selectedTags = [Tag]()
-//  var document: Document?
   var frc: NSFetchedResultsController<Tag>!
   var context: NSManagedObjectContext!
   var delegate: TagSelectDelegate?
@@ -40,7 +39,11 @@ class TagSelectVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
     } catch {
       print("no tag fetch :(")
     }
-    selectDocTags()
+    
+    if tags != nil {
+      selectDocTags()
+    }
+
   }
   
   func initializeFRC() -> NSFetchedResultsController<Tag> {

@@ -16,4 +16,5 @@ enum ListSort: String {
 
 enum DefaultKeys: String {
   case sortMethod
+  case filterTags
 }

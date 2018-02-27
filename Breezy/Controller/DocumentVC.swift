@@ -21,6 +21,7 @@ class DocumentVC: UIViewController, TouchDelegate, TagSelectDelegate, UITextView
   var context: NSManagedObjectContext!
   var document: Document?
   var tags: [Tag]? = nil
+  var accessory: DismissKeyboardView?
   
   // MARK: Initializing
   
@@ -29,17 +30,17 @@ class DocumentVC: UIViewController, TouchDelegate, TagSelectDelegate, UITextView
     let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.done))
     self.navigationItem.rightBarButtonItem = doneBtn
     tagView.touchDelegate = self
-    countLbl.text = "W: \(textView.wordCount) - C: \(textView.characterCount)"
+    updateCountLabel()
   }
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    let dismissKeyboard = UINib(nibName: "DismissKeyboard", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! DismissKeyboardView
-    dismissKeyboard.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 44)
-    dismissKeyboard.action = { self.dismissKeyboard() }
-    textView.inputAccessoryView = dismissKeyboard
-    titleFld.inputAccessoryView = dismissKeyboard
+    accessory = UINib(nibName: "DismissKeyboard", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! DismissKeyboardView
+    accessory!.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 44)
+    accessory!.action = { self.dismissKeyboard() }
+    textView.inputAccessoryView = accessory!
+    titleFld.inputAccessoryView = accessory!
     textView.delegate = self
     
     guard let doc = document else {
@@ -141,8 +142,13 @@ class DocumentVC: UIViewController, TouchDelegate, TagSelectDelegate, UITextView
   
   // MARK: TextView Delegate
   
+  func updateCountLabel() {
+    countLbl.text = "W: \(textView.wordCount) - C: \(textView.characterCount)"
+    accessory!.updateCountLabel(with: "W: \(textView.wordCount) - C: \(textView.characterCount)")
+  }
+  
   func textViewDidChange(_ textView: UITextView) {
-    // update labels
+    updateCountLabel()
   }
   
   // MARK: Segue

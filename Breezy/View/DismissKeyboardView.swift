@@ -11,12 +11,17 @@ import UIKit
 class DismissKeyboardView: UIView {
 
   @IBOutlet weak var dismissBtn: UIButton!
+  @IBOutlet weak var countLbl: CountLbl!
   
   var action: (() -> ())?
   
   @IBAction func dismiss(sender: UIButton) {
     guard let action = self.action else { return }
     action()
+  }
+  
+  func updateCountLabel(with text: String) {
+    self.countLbl.text = text
   }
 
 }

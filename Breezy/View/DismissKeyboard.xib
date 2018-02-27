@@ -16,7 +16,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XxP-20-X3u">
-                    <rect key="frame" x="314" y="0.0" width="45" height="40"/>
+                    <rect key="frame" x="322" y="0.0" width="45" height="40"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="45" id="4dt-ch-pCA"/>
                     </constraints>
@@ -25,16 +25,25 @@
                         <action selector="dismissWithSender:" destination="iN0-l3-epB" eventType="touchUpInside" id="4mK-hH-4ME"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jyH-T8-ewU" customClass="CountLbl" customModule="Breezy" customModuleProvider="target">
+                    <rect key="frame" x="8" y="10" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="jyH-T8-ewU" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="Uzb-pe-KCc"/>
                 <constraint firstItem="XxP-20-X3u" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="YzB-bb-bWO"/>
                 <constraint firstItem="XxP-20-X3u" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="bn5-F9-xBT"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="XxP-20-X3u" secondAttribute="trailing" constant="16" id="jcG-P9-56n"/>
+                <constraint firstItem="jyH-T8-ewU" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="jVO-jv-8LJ"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="XxP-20-X3u" secondAttribute="trailing" constant="8" id="jcG-P9-56n"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="countLbl" destination="jyH-T8-ewU" id="42Q-m3-fjB"/>
                 <outlet property="dismissBtn" destination="XxP-20-X3u" id="kul-I2-yas"/>
             </connections>
             <point key="canvasLocation" x="31" y="43"/>
