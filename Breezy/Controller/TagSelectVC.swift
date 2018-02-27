@@ -86,7 +86,7 @@ class TagSelectVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
     }))
     popup.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
     popup.addTextField { (field) in
-      field.placeholder = "TAG NAME"
+      field.placeholder = ""
     }
     self.present(popup, animated: true, completion: nil)
   }

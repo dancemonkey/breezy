@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		100608F920385EF300A06C94 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100608F820385EF300A06C94 /* Style.swift */; };
+		103215B12045A52E00E98689 /* CountLbl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 103215B02045A52E00E98689 /* CountLbl.swift */; };
 		104FB3A020378D81005FEE7D /* TagLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104FB39F20378D81005FEE7D /* TagLabel.swift */; };
 		104FB3A220378DF0005FEE7D /* CellHeadingLable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104FB3A120378DF0005FEE7D /* CellHeadingLable.swift */; };
 		104FB3A420378E22005FEE7D /* PreviewLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104FB3A320378E22005FEE7D /* PreviewLabel.swift */; };
@@ -58,6 +59,7 @@
 
 /* Begin PBXFileReference section */
 		100608F820385EF300A06C94 /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
+		103215B02045A52E00E98689 /* CountLbl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountLbl.swift; sourceTree = "<group>"; };
 		104FB39F20378D81005FEE7D /* TagLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagLabel.swift; sourceTree = "<group>"; };
 		104FB3A120378DF0005FEE7D /* CellHeadingLable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellHeadingLable.swift; sourceTree = "<group>"; };
 		104FB3A320378E22005FEE7D /* PreviewLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewLabel.swift; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 				10E0C529203DB49000E3CEDB /* DocTitleField.swift */,
 				10CB647A203F030500D3E5D1 /* DismissKeyboard.xib */,
 				10CB647C203F056800D3E5D1 /* DismissKeyboardView.swift */,
+				103215B02045A52E00E98689 /* CountLbl.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -368,6 +371,7 @@
 				106124EA2027BAD200F10338 /* Breezy.xcdatamodeld in Sources */,
 				106125222027BCD100F10338 /* Document+CoreDataProperties.swift in Sources */,
 				106124E42027BAD200F10338 /* DocumentList.swift in Sources */,
+				103215B12045A52E00E98689 /* CountLbl.swift in Sources */,
 				10F26940203C631900014679 /* UpdatedLbl.swift in Sources */,
 				1061252E2027C0DD00F10338 /* DocumentListTV.swift in Sources */,
 				10CB647D203F056800D3E5D1 /* DismissKeyboardView.swift in Sources */,

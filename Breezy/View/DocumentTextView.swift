@@ -20,7 +20,22 @@ class DocumentTextView: UITextView {
     let border = UIView(frame: borderFrame)
     border.layer.backgroundColor = UIColor.lightGray.cgColor
     self.addSubview(border)
-    
+  }
+  
+  var wordCount: Int {
+    get {
+      let words = self.text.components(separatedBy: .whitespacesAndNewlines).filter { (word) -> Bool in
+        word != ""
+      }
+      
+      return words.count
+    }
+  }
+  
+  var characterCount: Int {
+    get {
+      return self.text.count
+    }
   }
 
 }

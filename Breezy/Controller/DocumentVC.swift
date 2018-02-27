@@ -9,13 +9,14 @@
 import UIKit
 import CoreData
 
-class DocumentVC: UIViewController, TouchDelegate, TagSelectDelegate {
+class DocumentVC: UIViewController, TouchDelegate, TagSelectDelegate, UITextViewDelegate {
   
   @IBOutlet weak var textView: DocumentTextView!
   @IBOutlet weak var tagView: TagShareView!
   @IBOutlet weak var tagViewBtmConstraint: NSLayoutConstraint!
   @IBOutlet weak var shareBtn: UIBarButtonItem!
   @IBOutlet weak var titleFld: UITextField!
+  @IBOutlet weak var countLbl: CountLbl!
   
   var context: NSManagedObjectContext!
   var document: Document?
@@ -25,11 +26,10 @@ class DocumentVC: UIViewController, TouchDelegate, TagSelectDelegate {
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    defer {
-      let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.done))
-      self.navigationItem.rightBarButtonItem = doneBtn
-      tagView.touchDelegate = self
-    }
+    let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.done))
+    self.navigationItem.rightBarButtonItem = doneBtn
+    tagView.touchDelegate = self
+    countLbl.text = "W: \(textView.wordCount) - C: \(textView.characterCount)"
   }
   
   override func viewDidLoad() {
@@ -40,6 +40,7 @@ class DocumentVC: UIViewController, TouchDelegate, TagSelectDelegate {
     dismissKeyboard.action = { self.dismissKeyboard() }
     textView.inputAccessoryView = dismissKeyboard
     titleFld.inputAccessoryView = dismissKeyboard
+    textView.delegate = self
     
     guard let doc = document else {
       textView.text = ""
@@ -136,6 +137,12 @@ class DocumentVC: UIViewController, TouchDelegate, TagSelectDelegate {
   func updateDocumentTags(with newTags: [Tag]?) {
     self.tags = newTags
     tagView.configure(with: self.tags)
+  }
+  
+  // MARK: TextView Delegate
+  
+  func textViewDidChange(_ textView: UITextView) {
+    // update labels
   }
   
   // MARK: Segue
