@@ -18,7 +18,8 @@ class TagSelectVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
   var selectedTags = [Tag]()
   var frc: NSFetchedResultsController<Tag>!
   var context: NSManagedObjectContext!
-  var delegate: TagSelectDelegate?
+  var tagSelectDelegate: TagSelectDelegate?
+  var tagFilterDelegate: TagFilterDelegate?
   
   // MARK: Initialization
   override func viewDidLoad() {
@@ -69,13 +70,18 @@ class TagSelectVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
       navigationController?.popViewController(animated: true)
     }
     guard let selected = tableView.indexPathsForSelectedRows else {
-      delegate?.updateDocumentTags(with: nil)
+      tagSelectDelegate?.updateDocumentTags(with: nil)
       return
     }
     for selection in selected {
       selectedTags.append(frc.fetchedObjects![selection.row])
     }
-    delegate?.updateDocumentTags(with: selectedTags)
+    if tagSelectDelegate != nil {
+      tagSelectDelegate?.updateDocumentTags(with: selectedTags)
+    } else if tagFilterDelegate != nil {
+      tagFilterDelegate?.filterBy(tags: selectedTags)
+    }
+    
   }
   
   @IBAction func new(sender: UIBarButtonItem) {

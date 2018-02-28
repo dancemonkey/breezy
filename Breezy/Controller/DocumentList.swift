@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class DocumentList: UIViewController, NSFetchedResultsControllerDelegate, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
+class DocumentList: UIViewController, NSFetchedResultsControllerDelegate, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, TagFilterDelegate {
   
   // MARK: Properties
   @IBOutlet weak var tableView: UITableView!
@@ -105,9 +105,6 @@ class DocumentList: UIViewController, NSFetchedResultsControllerDelegate, UITabl
   
   @IBAction func filter(sender: UIBarButtonItem) {
     performSegue(withIdentifier: "selectTagFilter", sender: nil)
-    // show tag select screen
-    // filter by selected tags
-    // refresh/reload FRC and tableView
   }
   
   // MARK: Document Methods
@@ -224,7 +221,7 @@ class DocumentList: UIViewController, NSFetchedResultsControllerDelegate, UITabl
     do {
       try frc.performFetch()
     } catch {
-      print("predicated fetch not successful")
+      print("search fetch not successful")
     }
     tableView.reloadData()
   }
@@ -236,7 +233,27 @@ class DocumentList: UIViewController, NSFetchedResultsControllerDelegate, UITabl
     do {
       try frc.performFetch()
     } catch {
-      print("predicated fetch not successful")
+      print("clearing search fetch not successful")
+    }
+    tableView.reloadData()
+  }
+  
+  // MARK: Tag Filter Delegate
+  func filterBy(tags: [Tag]?) {
+    guard let t = tags else { return }
+    let tagNames = t.map { (tag) -> String in
+      return tag.name!
+    }
+    let filterPredicate = NSPredicate(format: "(%@ IN tagNames)", tagNames)
+    let newFilter = NSPredicate(format: "ANY tags.name IN %@", argumentArray: tagNames)
+
+//    frc.delegate = nil
+    frc.fetchRequest.predicate = newFilter
+//    frc.delegate = self
+    do {
+      try frc.performFetch()
+    } catch {
+      print("filtered fetch not successful")
     }
     tableView.reloadData()
   }
@@ -254,6 +271,7 @@ class DocumentList: UIViewController, NSFetchedResultsControllerDelegate, UITabl
     } else if segue.identifier == "selectTagFilter" {
       let destinaton = segue.destination as! TagSelectVC
       destinaton.context = self.context
+      destinaton.tagFilterDelegate = self
     }
   }
   

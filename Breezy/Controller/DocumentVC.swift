@@ -36,7 +36,7 @@ class DocumentVC: UIViewController, TouchDelegate, TagSelectDelegate, UITextView
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    accessory = UINib(nibName: "DismissKeyboard", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! DismissKeyboardView
+    accessory = UINib(nibName: "DismissKeyboard", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as? DismissKeyboardView
     accessory!.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 44)
     accessory!.action = { self.dismissKeyboard() }
     textView.inputAccessoryView = accessory!
@@ -143,8 +143,8 @@ class DocumentVC: UIViewController, TouchDelegate, TagSelectDelegate, UITextView
   // MARK: TextView Delegate
   
   func updateCountLabel() {
-    countLbl.text = "W: \(textView.wordCount) - C: \(textView.characterCount)"
-    accessory!.updateCountLabel(with: "W: \(textView.wordCount) - C: \(textView.characterCount)")
+    countLbl.text = "C: \(textView.characterCount)"
+    accessory!.updateCountLabel(with: "C: \(textView.characterCount)")
   }
   
   func textViewDidChange(_ textView: UITextView) {
@@ -158,7 +158,7 @@ class DocumentVC: UIViewController, TouchDelegate, TagSelectDelegate, UITextView
       let destVC = segue.destination as! TagSelectVC
       destVC.tags = self.tags
       destVC.context = self.context
-      destVC.delegate = self
+      destVC.tagSelectDelegate = self
     }
   }
   

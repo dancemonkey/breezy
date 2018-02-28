@@ -21,6 +21,14 @@ public class Document: NSManagedObject {
   }
   
   var editing: Bool = false
+  var tagNames: String {
+    var tagNames = ""
+    guard let tags = self.tags, tags.count > 0 else { return tagNames }
+    for tag in tags {
+      tagNames = tagNames + "\(tag.name!)"
+    }
+    return tagNames
+  }
   
   func setText(to text: String, withTitle title: String) {
     self.text = text
