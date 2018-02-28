@@ -71,11 +71,13 @@ class TagSelectVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
     }
     guard let selected = tableView.indexPathsForSelectedRows else {
       tagSelectDelegate?.updateDocumentTags(with: nil)
+      tagFilterDelegate?.filterBy(tags: nil)
       return
     }
     for selection in selected {
       selectedTags.append(frc.fetchedObjects![selection.row])
     }
+    
     if tagSelectDelegate != nil {
       tagSelectDelegate?.updateDocumentTags(with: selectedTags)
     } else if tagFilterDelegate != nil {

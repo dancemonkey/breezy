@@ -240,16 +240,19 @@ class DocumentList: UIViewController, NSFetchedResultsControllerDelegate, UITabl
   
   // MARK: Tag Filter Delegate
   func filterBy(tags: [Tag]?) {
-    guard let t = tags else { return }
-    let tagNames = t.map { (tag) -> String in
-      return tag.name!
+    guard let t = tags else {
+      frc.fetchRequest.predicate = nil
+      do {
+        try frc.performFetch()
+      } catch {
+        print("filtered fetch not successful")
+      }
+      tableView.reloadData()
+      return
     }
-    let filterPredicate = NSPredicate(format: "(%@ IN tagNames)", tagNames)
-    let newFilter = NSPredicate(format: "ANY tags.name IN %@", argumentArray: tagNames)
+    let newFilter = NSPredicate(format: "ANY %@ IN tags", argumentArray: t)
 
-//    frc.delegate = nil
     frc.fetchRequest.predicate = newFilter
-//    frc.delegate = self
     do {
       try frc.performFetch()
     } catch {
