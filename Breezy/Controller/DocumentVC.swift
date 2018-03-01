@@ -54,10 +54,10 @@ class DocumentVC: UIViewController, TouchDelegate, TagSelectDelegate, UITextView
     textView.text = doc.text
     tagView.configure(with: Array(doc.tags!))
     self.tags = Array(doc.tags!)
-    highlightFirstLineInTextView()
+    highlightFirstLineInTextView(true)
   }
   
-  func highlightFirstLineInTextView() {
+  func highlightFirstLineInTextView(_ highlight: Bool) {
     let textAsNSString = textView.text as NSString
     let lineBreakRange = textAsNSString.range(of: "\n")
     let newAttributedText = NSMutableAttributedString(attributedString: textView.attributedText)
@@ -68,7 +68,12 @@ class DocumentVC: UIViewController, TouchDelegate, TagSelectDelegate, UITextView
       boldRange = NSRange(location: 0, length: textAsNSString.length)
     }
     tempTitle = newAttributedText.string
-    newAttributedText.addAttribute(NSAttributedStringKey.font, value: UIFont(name: FontStyle.title.face, size: FontStyle.title.size), range: boldRange)
+    
+    if highlight {
+      newAttributedText.addAttribute(NSAttributedStringKey.font, value: UIFont(name: FontStyle.title.face, size: FontStyle.title.size), range: boldRange)
+    } else {
+      newAttributedText.addAttribute(NSAttributedStringKey.font, value: UIFont(name: FontStyle.document.face, size: FontStyle.document.size), range: boldRange)
+    }
     textView.attributedText = newAttributedText
   }
   
@@ -77,7 +82,7 @@ class DocumentVC: UIViewController, TouchDelegate, TagSelectDelegate, UITextView
   func dismissKeyboard() {
     if textView.isFirstResponder {
       textView.resignFirstResponder()
-      highlightFirstLineInTextView()
+      highlightFirstLineInTextView(true)
     }
   }
   
@@ -87,7 +92,7 @@ class DocumentVC: UIViewController, TouchDelegate, TagSelectDelegate, UITextView
     defer {
       navigationController?.popViewController(animated: true)
     }
-    highlightFirstLineInTextView()
+    highlightFirstLineInTextView(true)
     guard let doc = document else {
       let newDoc = Document(context: context)
       newDoc.setText(to: textView.text, withTitle: tempTitle ?? "")
@@ -159,17 +164,10 @@ class DocumentVC: UIViewController, TouchDelegate, TagSelectDelegate, UITextView
     updateCountLabel()
   }
   
-//  func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-//    let textAsNSString = self.textView.text as NSString
-//    let replaced = textAsNSString.replacingCharacters(in: range, with: text) as NSString
-//    let boldRange = replaced.range(of: "\n")
-//    if boldRange.location <= range.location {
-//      self.textView.typingAttributes = self.headerAttributes as! [String:Any]
-//    } else {
-//      self.textView.typingAttributes = self.bodyAttributes
-//    }
-//    return true
-//  }
+  func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+    highlightFirstLineInTextView(false)
+    return true
+  }
   
   // MARK: Segue
   
