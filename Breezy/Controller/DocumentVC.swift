@@ -11,17 +11,21 @@ import CoreData
 
 class DocumentVC: UIViewController, TouchDelegate, TagSelectDelegate, UITextViewDelegate {
   
+  // MARK: Properties
+  
   @IBOutlet weak var textView: DocumentTextView!
   @IBOutlet weak var tagView: TagShareView!
   @IBOutlet weak var tagViewBtmConstraint: NSLayoutConstraint!
   @IBOutlet weak var shareBtn: UIBarButtonItem!
-  @IBOutlet weak var titleFld: UITextField!
   @IBOutlet weak var countLbl: CountLbl!
   
   var context: NSManagedObjectContext!
   var document: Document?
   var tags: [Tag]? = nil
   var accessory: DismissKeyboardView?
+  var tempTitle: String? = nil
+  let headerAttributes = [NSAttributedStringKey.font : UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)]
+  let bodyAttributes = [NSAttributedStringKey.font : UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)]
   
   // MARK: Initializing
   
@@ -40,24 +44,32 @@ class DocumentVC: UIViewController, TouchDelegate, TagSelectDelegate, UITextView
     accessory!.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 44)
     accessory!.action = { self.dismissKeyboard() }
     textView.inputAccessoryView = accessory!
-    titleFld.inputAccessoryView = accessory!
     textView.delegate = self
     
     guard let doc = document else {
       textView.text = ""
-      titleFld.text = ""
-      titleFld.becomeFirstResponder()
+      textView.becomeFirstResponder()
       return
     }
     textView.text = doc.text
-    titleFld.text = doc.title!
     tagView.configure(with: Array(doc.tags!))
     self.tags = Array(doc.tags!)
-    
+    highlightFirstLineInTextView()
   }
   
-  override func viewWillDisappear(_ animated: Bool) {
-    super.viewWillDisappear(animated)
+  func highlightFirstLineInTextView() {
+    let textAsNSString = textView.text as NSString
+    let lineBreakRange = textAsNSString.range(of: "\n")
+    let newAttributedText = NSMutableAttributedString(attributedString: textView.attributedText)
+    let boldRange: NSRange
+    if lineBreakRange.location < textAsNSString.length {
+      boldRange = NSRange(location: 0, length: lineBreakRange.location)
+    } else {
+      boldRange = NSRange(location: 0, length: textAsNSString.length)
+    }
+    tempTitle = newAttributedText.string
+    newAttributedText.addAttribute(NSAttributedStringKey.font, value: UIFont(name: FontStyle.title.face, size: FontStyle.title.size), range: boldRange)
+    textView.attributedText = newAttributedText
   }
   
   // MARK: Keyboard show/hide
@@ -65,8 +77,7 @@ class DocumentVC: UIViewController, TouchDelegate, TagSelectDelegate, UITextView
   func dismissKeyboard() {
     if textView.isFirstResponder {
       textView.resignFirstResponder()
-    } else {
-      titleFld.resignFirstResponder()
+      highlightFirstLineInTextView()
     }
   }
   
@@ -76,10 +87,10 @@ class DocumentVC: UIViewController, TouchDelegate, TagSelectDelegate, UITextView
     defer {
       navigationController?.popViewController(animated: true)
     }
-    
+    highlightFirstLineInTextView()
     guard let doc = document else {
       let newDoc = Document(context: context)
-      newDoc.setText(to: textView.text, withTitle: titleFld.text!)
+      newDoc.setText(to: textView.text, withTitle: tempTitle ?? "")
       if let tags = self.tags {
         for tag in tags {
           newDoc.addToTags(tag)
@@ -97,7 +108,7 @@ class DocumentVC: UIViewController, TouchDelegate, TagSelectDelegate, UITextView
       }
       return
     }
-    doc.setText(to: textView.text, withTitle: titleFld.text!)
+    doc.setText(to: textView.text, withTitle: tempTitle ?? "")
     if let tags = self.tags {
       for tag in tags {
         doc.addToTags(tag)
@@ -117,9 +128,6 @@ class DocumentVC: UIViewController, TouchDelegate, TagSelectDelegate, UITextView
   // MARK: Share
   @IBAction func share(sender: UIBarButtonItem) {
     var shareItems = [Any]()
-    if let title = titleFld.text {
-      shareItems.append(title)
-    }
     if let text = textView.text {
       shareItems.append(text)
     }
@@ -150,6 +158,18 @@ class DocumentVC: UIViewController, TouchDelegate, TagSelectDelegate, UITextView
   func textViewDidChange(_ textView: UITextView) {
     updateCountLabel()
   }
+  
+//  func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+//    let textAsNSString = self.textView.text as NSString
+//    let replaced = textAsNSString.replacingCharacters(in: range, with: text) as NSString
+//    let boldRange = replaced.range(of: "\n")
+//    if boldRange.location <= range.location {
+//      self.textView.typingAttributes = self.headerAttributes as! [String:Any]
+//    } else {
+//      self.textView.typingAttributes = self.bodyAttributes
+//    }
+//    return true
+//  }
   
   // MARK: Segue
   

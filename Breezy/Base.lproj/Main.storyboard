@@ -63,16 +63,10 @@
                                                     </subviews>
                                                 </stackView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="MqF-oJ-rha" userLabel="Title and preview">
-                                                    <rect key="frame" x="16" y="8" width="343" height="41"/>
+                                                    <rect key="frame" x="16" y="8" width="343" height="20.5"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Oz-in-pDJ" customClass="CellHeadingLable" customModule="Breezy" customModuleProvider="target">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6M7-A5-u6d" customClass="PreviewLabel" customModule="Breezy" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="343" height="20.5"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6M7-A5-u6d" customClass="PreviewLabel" customModule="Breezy" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="20.5" width="343" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -98,7 +92,6 @@
                                         <connections>
                                             <outlet property="previewLbl" destination="6M7-A5-u6d" id="wPM-Yd-PA3"/>
                                             <outlet property="tagLbl" destination="uy4-gG-VEM" id="aPT-S7-oHv"/>
-                                            <outlet property="titleLbl" destination="2Oz-in-pDJ" id="Zuh-8w-MNk"/>
                                             <outlet property="updatedLbl" destination="hJ1-PC-t87" id="mEL-GH-RmM"/>
                                         </connections>
                                     </tableViewCell>
@@ -121,7 +114,7 @@
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="4zg-tP-n59"/>
-                        <barButtonItem title="Filter" id="lTI-wV-tha">
+                        <barButtonItem title="Filters" id="lTI-wV-tha">
                             <connections>
                                 <action selector="filterWithSender:" destination="BYZ-38-t0r" id="dYt-bk-JhP"/>
                             </connections>
@@ -129,7 +122,6 @@
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="p4m-Xh-i8p">
                         <barButtonItem key="backBarButtonItem" title="Cancel" id="ted-03-J5t"/>
-                        <barButtonItem key="leftBarButtonItem" title="Settings" id="NNE-3i-oQf"/>
                         <barButtonItem key="rightBarButtonItem" title="New +" id="8dm-jS-RTm">
                             <connections>
                                 <action selector="newDocument" destination="BYZ-38-t0r" id="nUE-Gb-Gdv"/>
@@ -152,13 +144,13 @@
         <!--DocumentVC-->
         <scene sceneID="Ypx-uR-tEd">
             <objects>
-                <viewController id="kVd-MO-iwt" customClass="DocumentVC" customModule="Breezy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="newNote" id="kVd-MO-iwt" customClass="DocumentVC" customModule="Breezy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0uK-zb-UXo" customClass="DocumentView" customModule="Breezy" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Jif-sq-7XC" customClass="DocumentTextView" customModule="Breezy" customModuleProvider="target">
-                                <rect key="frame" x="8" y="121" width="359" height="444"/>
+                                <rect key="frame" x="8" y="72" width="359" height="493"/>
                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" spellCheckingType="yes"/>
@@ -192,28 +184,16 @@
                                     <outlet property="tagLbl" destination="jNE-ju-9e0" id="nc5-Nb-qKX"/>
                                 </connections>
                             </view>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iFY-JE-qFF" customClass="DocTitleField" customModule="Breezy" customModuleProvider="target">
-                                <rect key="frame" x="8" y="68" width="359" height="45"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="gSl-t2-H7x"/>
-                                </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Jif-sq-7XC" firstAttribute="top" secondItem="58d-64-PMs" secondAttribute="top" constant="8" id="B65-eg-wRn"/>
                             <constraint firstItem="58d-64-PMs" firstAttribute="trailing" secondItem="Jif-sq-7XC" secondAttribute="trailing" constant="8" id="BpQ-mU-86j"/>
-                            <constraint firstItem="58d-64-PMs" firstAttribute="trailing" secondItem="iFY-JE-qFF" secondAttribute="trailing" constant="8" id="E90-0L-ufs"/>
                             <constraint firstItem="iQu-hl-VZJ" firstAttribute="leading" secondItem="58d-64-PMs" secondAttribute="leading" id="JUb-QC-oqt"/>
                             <constraint firstItem="iQu-hl-VZJ" firstAttribute="top" secondItem="Jif-sq-7XC" secondAttribute="bottom" constant="8" id="Jlf-xC-ZIK"/>
                             <constraint firstItem="58d-64-PMs" firstAttribute="trailing" secondItem="iQu-hl-VZJ" secondAttribute="trailing" id="SL8-VY-SvF"/>
                             <constraint firstItem="58d-64-PMs" firstAttribute="bottom" secondItem="iQu-hl-VZJ" secondAttribute="bottom" id="Tl8-5D-cmd"/>
                             <constraint firstItem="Jif-sq-7XC" firstAttribute="leading" secondItem="58d-64-PMs" secondAttribute="leading" constant="8" id="WKO-zl-2xe"/>
-                            <constraint firstItem="iFY-JE-qFF" firstAttribute="top" secondItem="58d-64-PMs" secondAttribute="top" constant="4" id="gWK-d4-65x"/>
-                            <constraint firstItem="iFY-JE-qFF" firstAttribute="leading" secondItem="58d-64-PMs" secondAttribute="leading" constant="8" id="tfh-XM-FjR"/>
-                            <constraint firstItem="Jif-sq-7XC" firstAttribute="top" secondItem="iFY-JE-qFF" secondAttribute="bottom" constant="8" id="uM1-EI-21c"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="58d-64-PMs"/>
                     </view>
@@ -231,7 +211,6 @@
                         <outlet property="tagView" destination="iQu-hl-VZJ" id="qIf-uz-m42"/>
                         <outlet property="tagViewBtmConstraint" destination="Tl8-5D-cmd" id="TzO-Jx-8XE"/>
                         <outlet property="textView" destination="Jif-sq-7XC" id="4XF-27-hl2"/>
-                        <outlet property="titleFld" destination="iFY-JE-qFF" id="AEN-Hq-Oct"/>
                         <segue destination="TxO-MZ-u4j" kind="show" identifier="showTagSelect" id="x1Y-d7-XT4"/>
                     </connections>
                 </viewController>
@@ -323,6 +302,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="x1Y-d7-XT4"/>
+        <segue reference="kyn-iy-mGN"/>
     </inferredMetricsTieBreakers>
 </document>

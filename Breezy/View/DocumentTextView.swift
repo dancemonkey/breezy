@@ -15,11 +15,7 @@ class DocumentTextView: UITextView {
     
     textColor = FontStyle.document.color
     font = UIFont(name: FontStyle.document.face, size: FontStyle.document.size)
-    
-    let borderFrame = CGRect(x: 0, y: 0, width: self.frame.width, height: 1)
-    let border = UIView(frame: borderFrame)
-    border.layer.backgroundColor = UIColor.lightGray.cgColor
-    self.addSubview(border)
+
   }
   
   var wordCount: Int {
