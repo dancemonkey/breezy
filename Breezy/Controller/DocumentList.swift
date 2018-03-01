@@ -250,9 +250,13 @@ class DocumentList: UIViewController, NSFetchedResultsControllerDelegate, UITabl
       tableView.reloadData()
       return
     }
-    let newFilter = NSPredicate(format: "ANY %@ IN tags", argumentArray: t)
-
-    frc.fetchRequest.predicate = newFilter
+    var filters = [NSPredicate]()
+    for tag in t {
+      let new = NSPredicate(format: "%@ IN tags", tag)
+      filters.append(new)
+    }
+    let filter = NSCompoundPredicate(orPredicateWithSubpredicates: filters)
+    frc.fetchRequest.predicate = filter
     do {
       try frc.performFetch()
     } catch {
