@@ -102,6 +102,12 @@ class TagSelectVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
     self.present(popup, animated: true, completion: nil)
   }
   
+  @IBAction func clear(sender: UIBarButtonItem) {
+    for row in 0 ..< tableView.numberOfRows(inSection: 0) {
+      tableView.deselectRow(at: IndexPath(row: row, section: 0), animated: true)
+    }
+  }
+  
   // MARK: Tableview
   
   func numberOfSections(in tableView: UITableView) -> Int {

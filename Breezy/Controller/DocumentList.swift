@@ -18,6 +18,7 @@ class DocumentList: UIViewController, NSFetchedResultsControllerDelegate, UITabl
   
   let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
   var frc: NSFetchedResultsController<Document>!
+  var filterTags: [Tag]? = nil
   
   // MARK: App Start
   
@@ -240,6 +241,7 @@ class DocumentList: UIViewController, NSFetchedResultsControllerDelegate, UITabl
   
   // MARK: Tag Filter Delegate
   func filterBy(tags: [Tag]?) {
+    filterTags = tags
     guard let t = tags else {
       frc.fetchRequest.predicate = nil
       do {
@@ -279,6 +281,7 @@ class DocumentList: UIViewController, NSFetchedResultsControllerDelegate, UITabl
       let destinaton = segue.destination as! TagSelectVC
       destinaton.context = self.context
       destinaton.tagFilterDelegate = self
+      destinaton.tags = filterTags
     }
   }
   

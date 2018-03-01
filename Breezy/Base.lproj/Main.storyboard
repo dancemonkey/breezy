@@ -281,6 +281,11 @@
                         <viewLayoutGuide key="safeArea" id="RhP-OR-gQQ"/>
                     </view>
                     <toolbarItems>
+                        <barButtonItem title="Clear" id="Ecu-8D-yle">
+                            <connections>
+                                <action selector="clearWithSender:" destination="TxO-MZ-u4j" id="knQ-Xu-mLM"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="kJT-xk-VNW"/>
                         <barButtonItem systemItem="add" id="Tx2-84-iuk">
                             <connections>
