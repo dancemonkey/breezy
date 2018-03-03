@@ -70,9 +70,9 @@ class DocumentVC: UIViewController, TouchDelegate, TagSelectDelegate, UITextView
     tempTitle = newAttributedText.string
     
     if highlight {
-      newAttributedText.addAttribute(NSAttributedStringKey.font, value: UIFont(name: FontStyle.title.face, size: FontStyle.title.size), range: boldRange)
+      newAttributedText.addAttribute(NSAttributedStringKey.font, value: UIFont(name: FontStyle.title.face, size: FontStyle.title.size)!, range: boldRange)
     } else {
-      newAttributedText.addAttribute(NSAttributedStringKey.font, value: UIFont(name: FontStyle.document.face, size: FontStyle.document.size), range: boldRange)
+      newAttributedText.addAttribute(NSAttributedStringKey.font, value: UIFont(name: FontStyle.document.face, size: FontStyle.document.size)!, range: boldRange)
     }
     textView.attributedText = newAttributedText
   }

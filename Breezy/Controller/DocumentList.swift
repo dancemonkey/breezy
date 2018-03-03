@@ -19,6 +19,7 @@ class DocumentList: UIViewController, NSFetchedResultsControllerDelegate, UITabl
   let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
   var frc: NSFetchedResultsController<Document>!
   var filterTags: [Tag]? = nil
+  var currentSort: ListSort?
   
   // MARK: App Start
   
@@ -54,11 +55,14 @@ class DocumentList: UIViewController, NSFetchedResultsControllerDelegate, UITabl
   
   func getDefaultSort() -> ListSort {
     guard let sortMethod = UserDefaults().value(forKey: DefaultKeys.sortMethod.rawValue) else {
+      currentSort = .lastUpdated
       return .lastUpdated
     }
     guard let method = ListSort(rawValue: sortMethod as! String) else {
+      currentSort = .lastUpdated
       return .lastUpdated
     }
+    currentSort = method
     return method
   }
   
@@ -69,16 +73,29 @@ class DocumentList: UIViewController, NSFetchedResultsControllerDelegate, UITabl
     return fetchedResultsController
   }
   
-  // MARK: Filter and Sort
+  // MARK: Filter and Sort Buttons
   @IBAction func sort(sender: UIBarButtonItem) {
-    let alert = UIAlertController(title: "Sort by", message: nil, preferredStyle: .actionSheet)
+    var message = ""
+    switch currentSort! {
+    case .creation:
+      message = "Sorting by creation date."
+    case .lastUpdated:
+      message = "Sorting by date last modified."
+    case .title:
+      message = "Sorting by title."
+    }
+    
+    let alert = UIAlertController(title: message, message: nil, preferredStyle: .actionSheet)
     let created = UIAlertAction(title: "Created", style: .default) { (action) in
+      self.currentSort = .creation
       self.sort(by: .creation)
     }
     let modified = UIAlertAction(title: "Modified", style: .default) { (action) in
+      self.currentSort = .lastUpdated
       self.sort(by: .lastUpdated)
     }
     let name = UIAlertAction(title: "Name", style: .default) { (action) in
+      self.currentSort = .title
       self.sort(by: .title)
     }
     alert.addAction(modified)
@@ -204,7 +221,7 @@ class DocumentList: UIViewController, NSFetchedResultsControllerDelegate, UITabl
   func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
     var predicate: NSPredicate? = nil
     if let text = searchBar.text, text.count > 0 {
-      predicate = NSPredicate(format: "(title contains %@) || (text contains %@)", text, text)
+      predicate = NSPredicate(format: "(title contains[c] %@) || (text contains[c] %@)", text, text)
       frc.fetchRequest.predicate = predicate
       do {
         try frc.performFetch()
