@@ -54,35 +54,35 @@ class DocumentVC: UIViewController, TouchDelegate, TagSelectDelegate, UITextView
     textView.text = doc.text
     tagView.configure(with: Array(doc.tags!))
     self.tags = Array(doc.tags!)
-    highlightFirstLineInTextView(true)
+    textView.highlightFirstLine(true)
   }
   
-  func highlightFirstLineInTextView(_ highlight: Bool) {
-    let textAsNSString = textView.text as NSString
-    let lineBreakRange = textAsNSString.range(of: "\n")
-    let newAttributedText = NSMutableAttributedString(attributedString: textView.attributedText)
-    let boldRange: NSRange
-    if lineBreakRange.location < textAsNSString.length {
-      boldRange = NSRange(location: 0, length: lineBreakRange.location)
-    } else {
-      boldRange = NSRange(location: 0, length: textAsNSString.length)
-    }
-    tempTitle = newAttributedText.string
-    
-    if highlight {
-      newAttributedText.addAttribute(NSAttributedStringKey.font, value: UIFont(name: FontStyle.title.face, size: FontStyle.title.size)!, range: boldRange)
-    } else {
-      newAttributedText.addAttribute(NSAttributedStringKey.font, value: UIFont(name: FontStyle.document.face, size: FontStyle.document.size)!, range: boldRange)
-    }
-    textView.attributedText = newAttributedText
-  }
+//  func highlightFirstLineInTextView(_ highlight: Bool) {
+//    let textAsNSString = textView.text as NSString
+//    let lineBreakRange = textAsNSString.range(of: "\n")
+//    let newAttributedText = NSMutableAttributedString(attributedString: textView.attributedText)
+//    let boldRange: NSRange
+//    if lineBreakRange.location < textAsNSString.length {
+//      boldRange = NSRange(location: 0, length: lineBreakRange.location)
+//    } else {
+//      boldRange = NSRange(location: 0, length: textAsNSString.length)
+//    }
+//
+//    if highlight {
+//      newAttributedText.addAttribute(NSAttributedStringKey.font, value: UIFont(name: FontStyle.title.face, size: FontStyle.title.size)!, range: boldRange)
+//    } else {
+//      newAttributedText.addAttribute(NSAttributedStringKey.font, value: UIFont(name: FontStyle.document.face, size: FontStyle.document.size)!, range: boldRange)
+//    }
+//    tempTitle = textAsNSString.substring(with: boldRange)
+//    textView.attributedText = newAttributedText
+//  }
   
   // MARK: Keyboard show/hide
   
   func dismissKeyboard() {
     if textView.isFirstResponder {
       textView.resignFirstResponder()
-      highlightFirstLineInTextView(true)
+      textView.highlightFirstLine(true)
     }
   }
   
@@ -92,10 +92,10 @@ class DocumentVC: UIViewController, TouchDelegate, TagSelectDelegate, UITextView
     defer {
       navigationController?.popViewController(animated: true)
     }
-    highlightFirstLineInTextView(true)
+    textView.highlightFirstLine(true)
     guard let doc = document else {
       let newDoc = Document(context: context)
-      newDoc.setText(to: textView.text, withTitle: tempTitle ?? "")
+      newDoc.setText(to: textView.text, withTitle: textView.firstLine ?? "")
       if let tags = self.tags {
         for tag in tags {
           newDoc.addToTags(tag)
@@ -113,7 +113,7 @@ class DocumentVC: UIViewController, TouchDelegate, TagSelectDelegate, UITextView
       }
       return
     }
-    doc.setText(to: textView.text, withTitle: tempTitle ?? "")
+    doc.setText(to: textView.text, withTitle: textView.firstLine ?? "")
     if let tags = self.tags {
       for tag in tags {
         doc.addToTags(tag)
@@ -165,7 +165,7 @@ class DocumentVC: UIViewController, TouchDelegate, TagSelectDelegate, UITextView
   }
   
   func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
-    highlightFirstLineInTextView(false)
+    (textView as! DocumentTextView).highlightFirstLine(false)
     return true
   }
   
