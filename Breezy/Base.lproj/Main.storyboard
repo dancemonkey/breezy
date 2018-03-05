@@ -108,13 +108,13 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <toolbarItems>
-                        <barButtonItem title="Sort" id="Iv7-Ya-qBJ">
+                        <barButtonItem image="Sort" id="Iv7-Ya-qBJ">
                             <connections>
                                 <action selector="sortWithSender:" destination="BYZ-38-t0r" id="kDy-Sl-5cZ"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="4zg-tP-n59"/>
-                        <barButtonItem title="Filters" id="lTI-wV-tha">
+                        <barButtonItem image="FilterAdd" id="lTI-wV-tha">
                             <connections>
                                 <action selector="filterWithSender:" destination="BYZ-38-t0r" id="dYt-bk-JhP"/>
                             </connections>
@@ -122,7 +122,7 @@
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="p4m-Xh-i8p">
                         <barButtonItem key="backBarButtonItem" title="Cancel" id="ted-03-J5t"/>
-                        <barButtonItem key="rightBarButtonItem" title="New +" id="8dm-jS-RTm">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="8dm-jS-RTm">
                             <connections>
                                 <action selector="newDocument" destination="BYZ-38-t0r" id="nUE-Gb-Gdv"/>
                             </connections>
@@ -130,6 +130,7 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="filterBtn" destination="lTI-wV-tha" id="mUp-qS-Duy"/>
                         <outlet property="newBtn" destination="8dm-jS-RTm" id="pOn-0M-La4"/>
                         <outlet property="searchBar" destination="AEl-Av-3NI" id="KcL-JF-KgS"/>
                         <outlet property="tableView" destination="ReL-eg-QWV" id="YDw-eW-npU"/>
@@ -302,7 +303,11 @@
             <point key="canvasLocation" x="-324" y="34"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="FilterAdd" width="25" height="28"/>
+        <image name="Sort" width="25" height="24"/>
+    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="kyn-iy-mGN"/>
+        <segue reference="x1Y-d7-XT4"/>
     </inferredMetricsTieBreakers>
 </document>

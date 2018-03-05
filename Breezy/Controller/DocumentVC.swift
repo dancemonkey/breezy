@@ -31,7 +31,8 @@ class DocumentVC: UIViewController, TouchDelegate, TagSelectDelegate, UITextView
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.done))
+    let doneBtn = UIBarButtonItem(image: UIImage(named: "Done"), style: .plain, target: self, action: #selector(self.done))
+//    doneBtn.image = UIImage(named: "Done")
     self.navigationItem.rightBarButtonItem = doneBtn
     tagView.touchDelegate = self
     updateCountLabel()

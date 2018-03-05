@@ -15,6 +15,7 @@ class DocumentList: UIViewController, NSFetchedResultsControllerDelegate, UITabl
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var newBtn: UIBarButtonItem!
   @IBOutlet weak var searchBar: UISearchBar!
+  @IBOutlet weak var filterBtn: UIBarButtonItem!
   
   let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
   var frc: NSFetchedResultsController<Document>!
@@ -263,6 +264,7 @@ class DocumentList: UIViewController, NSFetchedResultsControllerDelegate, UITabl
     filterTags = tags
     guard let t = tags else {
       frc.fetchRequest.predicate = nil
+      filterBtn.image = UIImage(named: "FilterAdd")
       do {
         try frc.performFetch()
       } catch {
@@ -284,6 +286,7 @@ class DocumentList: UIViewController, NSFetchedResultsControllerDelegate, UITabl
       print("filtered fetch not successful")
     }
     tableView.reloadData()
+    filterBtn.image = UIImage(named: "FilterRemove")
   }
   
   // MARK: Segue
