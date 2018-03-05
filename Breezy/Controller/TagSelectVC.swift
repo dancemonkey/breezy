@@ -25,7 +25,7 @@ class TagSelectVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.done))
+    let doneBtn = UIBarButtonItem(image: UIImage(named: "Done"), style: .plain, target: self, action: #selector(self.done))
     let backBtn = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: nil)
     self.navigationItem.rightBarButtonItem = doneBtn
     self.navigationItem.backBarButtonItem = backBtn
@@ -58,7 +58,9 @@ class TagSelectVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
     guard let tags = self.tags, let fetched = frc.fetchedObjects else { return }
     for tag in tags {
       if fetched.contains(tag) {
-        tableView.selectRow(at: frc.indexPath(forObject: tag), animated: true, scrollPosition: .middle)
+        tableView.selectRow(at: frc.indexPath(forObject: tag), animated: true, scrollPosition: .none)
+        let cell = tableView.cellForRow(at: frc.indexPath(forObject: tag)!) as! TagSelectCell
+        cell.selectIndicator.isHidden = false
       }
     }
   }
@@ -120,9 +122,9 @@ class TagSelectVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "tagCell")
-    cell?.textLabel?.text = frc.fetchedObjects![indexPath.row].name!
-    return cell!
+    let cell = tableView.dequeueReusableCell(withIdentifier: "tagSelectCell") as! TagSelectCell
+    cell.configure(with: frc.fetchedObjects![indexPath.row])
+    return cell
   }
   
   func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
@@ -136,6 +138,16 @@ class TagSelectVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
         print("did not save after deleting tag")
       }
     }
+  }
+  
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let cell = tableView.cellForRow(at: indexPath) as! TagSelectCell
+    cell.selectIndicator.isHidden = false
+  }
+  
+  func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+    let cell = tableView.cellForRow(at: indexPath) as! TagSelectCell
+    cell.selectIndicator.isHidden = true
   }
   
   // MARK: NS FRC methods

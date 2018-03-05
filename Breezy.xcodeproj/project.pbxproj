@@ -34,6 +34,7 @@
 		10CB647B203F030500D3E5D1 /* DismissKeyboard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10CB647A203F030500D3E5D1 /* DismissKeyboard.xib */; };
 		10CB647D203F056800D3E5D1 /* DismissKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CB647C203F056800D3E5D1 /* DismissKeyboardView.swift */; };
 		10CB647F203F0A1100D3E5D1 /* TagSelectDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CB647E203F0A1100D3E5D1 /* TagSelectDelegate.swift */; };
+		10CE55FD204D93FC0042F8C9 /* TagSelectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CE55FC204D93FC0042F8C9 /* TagSelectCell.swift */; };
 		10CFCFC8203DBC1B004B65C4 /* TagSelectVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CFCFC7203DBC1B004B65C4 /* TagSelectVC.swift */; };
 		10CFCFCA203DBE2E004B65C4 /* TouchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CFCFC9203DBE2E004B65C4 /* TouchDelegate.swift */; };
 		10E0C528203DB11700E3CEDB /* DefaultKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E0C527203DB11700E3CEDB /* DefaultKeys.swift */; };
@@ -92,6 +93,7 @@
 		10CB647A203F030500D3E5D1 /* DismissKeyboard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DismissKeyboard.xib; sourceTree = "<group>"; };
 		10CB647C203F056800D3E5D1 /* DismissKeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissKeyboardView.swift; sourceTree = "<group>"; };
 		10CB647E203F0A1100D3E5D1 /* TagSelectDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagSelectDelegate.swift; sourceTree = "<group>"; };
+		10CE55FC204D93FC0042F8C9 /* TagSelectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagSelectCell.swift; sourceTree = "<group>"; };
 		10CFCFC7203DBC1B004B65C4 /* TagSelectVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagSelectVC.swift; sourceTree = "<group>"; };
 		10CFCFC9203DBE2E004B65C4 /* TouchDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchDelegate.swift; sourceTree = "<group>"; };
 		10E0C527203DB11700E3CEDB /* DefaultKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultKeys.swift; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 				10CB647A203F030500D3E5D1 /* DismissKeyboard.xib */,
 				10CB647C203F056800D3E5D1 /* DismissKeyboardView.swift */,
 				103215B02045A52E00E98689 /* CountLbl.swift */,
+				10CE55FC204D93FC0042F8C9 /* TagSelectCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -368,6 +371,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				10CFCFC8203DBC1B004B65C4 /* TagSelectVC.swift in Sources */,
+				10CE55FD204D93FC0042F8C9 /* TagSelectCell.swift in Sources */,
 				104FB3A220378DF0005FEE7D /* CellHeadingLable.swift in Sources */,
 				106125282027BE7300F10338 /* DocumentListCell.swift in Sources */,
 				1061252A2027BF9600F10338 /* DocumentVC.swift in Sources */,
