@@ -107,6 +107,8 @@ class TagSelectVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
   @IBAction func clear(sender: UIBarButtonItem) {
     for row in 0 ..< tableView.numberOfRows(inSection: 0) {
       tableView.deselectRow(at: IndexPath(row: row, section: 0), animated: true)
+      let cell = tableView.cellForRow(at: IndexPath(row: row, section: 0)) as! TagSelectCell
+      cell.selectIndicator.isHidden = true
     }
   }
   

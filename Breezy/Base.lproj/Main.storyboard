@@ -240,8 +240,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SbI-ux-ync">
-                                                    <rect key="frame" x="23" y="11" width="329" height="20.5"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="SbI-ux-ync">
+                                                    <rect key="frame" x="23" y="11.5" width="329" height="20.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u8p-bx-SiB">
                                                             <rect key="frame" x="0.0" y="0.0" width="314" height="20.5"/>
@@ -249,10 +249,10 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="251" image="Selected" translatesAutoresizingMaskIntoConstraints="NO" id="S3k-4m-ZcI">
-                                                            <rect key="frame" x="314" y="0.0" width="15" height="20.5"/>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="251" image="Selected" translatesAutoresizingMaskIntoConstraints="NO" id="A2j-w1-LY0">
+                                                            <rect key="frame" x="314" y="5.5" width="15" height="10"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="15" id="fgD-K5-zKN"/>
+                                                                <constraint firstAttribute="height" constant="10" id="iwk-GX-mmh"/>
                                                             </constraints>
                                                         </imageView>
                                                     </subviews>
@@ -265,7 +265,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="selectIndicator" destination="S3k-4m-ZcI" id="JTx-FG-WIw"/>
+                                            <outlet property="selectIndicator" destination="A2j-w1-LY0" id="ZbW-UQ-xIy"/>
                                             <outlet property="tagLbl" destination="u8p-bx-SiB" id="xbn-Ap-WPp"/>
                                         </connections>
                                     </tableViewCell>
@@ -325,7 +325,7 @@
     </scenes>
     <resources>
         <image name="FilterAdd" width="25" height="28"/>
-        <image name="Selected" width="25" height="18"/>
+        <image name="Selected" width="15" height="10"/>
         <image name="Sort" width="25" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
