@@ -51,6 +51,8 @@ class DocumentList: UIViewController, NSFetchedResultsControllerDelegate, UITabl
       print("no fetchie")
     }
     tableView.reloadData()
+    
+    performSegue(withIdentifier: "showDocument", sender: nil)
   }
   
   func getDefaultSort() -> ListSort {
@@ -78,11 +80,11 @@ class DocumentList: UIViewController, NSFetchedResultsControllerDelegate, UITabl
     var message = ""
     switch currentSort! {
     case .creation:
-      message = "Sorting by creation date."
+      message = "Sorted by CREATION DATE."
     case .lastUpdated:
-      message = "Sorting by date last modified."
+      message = "Sorted by date LAST MODIFIED."
     case .title:
-      message = "Sorting by title."
+      message = "Sorted by NAME."
     }
     
     let alert = UIAlertController(title: message, message: nil, preferredStyle: .actionSheet)

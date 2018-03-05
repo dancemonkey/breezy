@@ -15,6 +15,8 @@ class DocumentTextView: UITextView {
     
     textColor = FontStyle.document.color
     font = UIFont(name: FontStyle.document.face, size: FontStyle.document.size)
+    
+    self.isEditable = false
 
   }
   
@@ -65,6 +67,12 @@ class DocumentTextView: UITextView {
       newAttributedText.addAttribute(NSAttributedStringKey.font, value: UIFont(name: FontStyle.document.face, size: FontStyle.document.size)!, range: boldRange)
     }
     self.attributedText = newAttributedText
+  }
+  
+  // MARK: Touch handlers
+  override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+    self.isEditable = true
+    self.becomeFirstResponder()
   }
 
 }
