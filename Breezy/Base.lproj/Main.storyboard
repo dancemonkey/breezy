@@ -1,19 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XPE-RY-6bw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14092" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XPE-RY-6bw">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14081.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="Avenir.ttc">
-            <string>Avenir-Book</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--Document List-->
         <scene sceneID="tne-QT-ifu">
@@ -122,7 +117,7 @@
                         </barButtonItem>
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="p4m-Xh-i8p">
-                        <barButtonItem key="backBarButtonItem" title="Cancel" id="ted-03-J5t"/>
+                        <barButtonItem key="backBarButtonItem" title="Done" id="ted-03-J5t"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="8dm-jS-RTm">
                             <connections>
                                 <action selector="newDocument" destination="BYZ-38-t0r" id="nUE-Gb-Gdv"/>
@@ -329,6 +324,6 @@
         <image name="Sort" width="25" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="x1Y-d7-XT4"/>
+        <segue reference="kyn-iy-mGN"/>
     </inferredMetricsTieBreakers>
 </document>

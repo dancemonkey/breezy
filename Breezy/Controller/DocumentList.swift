@@ -38,7 +38,7 @@ class DocumentList: UIViewController, NSFetchedResultsControllerDelegate, UITabl
     tableView.dataSource = self
     tableView.delegate = self
     searchBar.delegate = self
-    searchBar.showsCancelButton = true
+    searchBar.showsCancelButton = false
     
     var ascending = false
     if getDefaultSort() == .title {
@@ -134,7 +134,6 @@ class DocumentList: UIViewController, NSFetchedResultsControllerDelegate, UITabl
   }
   
   // MARK: Tableview Methods
-  
   func configure(cell: DocumentListCell, at indexPath: IndexPath) {
     cell.configure(with: frc.object(at: indexPath))
   }
@@ -190,7 +189,6 @@ class DocumentList: UIViewController, NSFetchedResultsControllerDelegate, UITabl
   }
   
   // MARK: NS FRC Methods
-  
   func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
     tableView.endUpdates()
   }
@@ -220,8 +218,8 @@ class DocumentList: UIViewController, NSFetchedResultsControllerDelegate, UITabl
   }
   
   // MARK: Search bar delegate
-  
   func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    searchBar.showsCancelButton = true
     var predicate: NSPredicate? = nil
     if let text = searchBar.text, text.count > 0 {
       predicate = NSPredicate(format: "(title contains[c] %@) || (text contains[c] %@)", text, text)
@@ -245,6 +243,7 @@ class DocumentList: UIViewController, NSFetchedResultsControllerDelegate, UITabl
       print("search fetch not successful")
     }
     tableView.reloadData()
+    searchBar.showsCancelButton = false
   }
   
   func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -257,6 +256,7 @@ class DocumentList: UIViewController, NSFetchedResultsControllerDelegate, UITabl
       print("clearing search fetch not successful")
     }
     tableView.reloadData()
+    searchBar.showsCancelButton = false
   }
   
   // MARK: Tag Filter Delegate

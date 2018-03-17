@@ -32,10 +32,17 @@ class DocumentVC: UIViewController, TouchDelegate, TagSelectDelegate, UITextView
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     let doneBtn = UIBarButtonItem(image: UIImage(named: "Done"), style: .plain, target: self, action: #selector(self.done))
-//    doneBtn.image = UIImage(named: "Done")
     self.navigationItem.rightBarButtonItem = doneBtn
     tagView.touchDelegate = self
     updateCountLabel()
+  }
+  
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+    if self.isMovingFromParentViewController {
+      print("back button pressed")
+      save()
+    }
   }
   
   override func viewDidLoad() {
@@ -69,9 +76,12 @@ class DocumentVC: UIViewController, TouchDelegate, TagSelectDelegate, UITextView
     }
   }
   
-  // MARK: Done
-  
-  @objc func done() {
+  // MARK: Saving
+  func save() {
+    guard textView.text != "" else {
+      navigationController?.popViewController(animated: true)
+      return
+    }
     defer {
       navigationController?.popViewController(animated: true)
     }
@@ -111,6 +121,10 @@ class DocumentVC: UIViewController, TouchDelegate, TagSelectDelegate, UITextView
     } catch {
       print("oops document saving didn't work!")
     }
+  }
+  
+  @objc func done() {
+    textView.resignFirstResponder()
   }
   
   // MARK: Share
